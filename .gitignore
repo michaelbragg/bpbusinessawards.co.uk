@@ -1,0 +1,76 @@
+# Birmingham Post Business Awards
+
+## Development
+_assets
+
+## System
+
+error_log
+.DS_Store
+
+## Server
+
+.env
+/shared/*
+
+## Development
+
+bin
+.vagrant
+vendor/*
+
+## PHP
+composer.lock
+
+## NodeJS
+
+node_modules/
+npm-debug.log
+
+## WordPress
+
+html/wp/*
+html/media/*
+
+!html/media/index.php
+
+### Languages
+html/app/languages/*
+
+#### White-list Languages
+!html/app/languages/index.php
+
+### Plugins
+html/app/db.php
+html/app/plugins/*
+html/app/plugins-mu/*
+
+#### White-list Plugins
+!html/app/plugins/index.php
+!html/app/plugins/ctba-entries-2016.php
+!html/app/plugins-mu/index.php
+!html/app/plugins-mu/ctba_categories.php
+!html/app/plugins-mu/ctba_entries.php
+!html/app/plugins-mu/ctba_judges.php
+!html/app/plugins-mu/ctba_partners.php
+!html/app/plugins-mu/ti-core-functions.php
+!html/app/plugins-mu/ti-roles-and-capabilities.php
+!html/app/plugins-mu/ti-widgets.php
+!html/app/plugins-mu/ti-wordpress-seo.php
+!html/app/plugins-mu/ti-security.php
+!html/app/plugins-mu/cmb2.php
+!html/app/plugins-mu/hm-gtm.php
+
+### Themes
+.sass-cache
+html/app/themes/*
+
+#### White-list Themes
+!html/app/themes/index.php
+!html/app/themes/bpba/
+
+#### BPBA
+html/app/themes/bpba/style.css
+html/app/themes/bpba/editor-style.css
+html/app/themes/bpba/bower_components/
+html/app/themes/bpba/node_modules/

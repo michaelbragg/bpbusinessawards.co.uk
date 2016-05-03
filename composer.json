@@ -1,0 +1,83 @@
+{
+  "name": "trinitymirror/bpbusinessawards.co.uk",
+  "type": "project",
+  "description": "Website for the Birmingham Post Business Awards",
+  "homepage": "http://www.trinitymirror.com/",
+  "authors": [ {
+    "name": "Michael Bragg",
+    "email": "michael@michaelbragg.net",
+    "homepage": "http://www.michaelbragg.net"
+    } ],
+  "keywords": [
+        "wordpress"
+    ],
+  "repositories": [ {
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "humanmade/hm-gtm",
+        "type": "wordpress-muplugin",
+        "version": "1.0",
+        "source": {
+          "url": "https://github.com/humanmade/hm-gtm.git",
+          "type": "vcs",
+          "reference": "origin/master"
+        },
+        "dist": {
+          "type": "zip",
+          "url": "https://github.com/humanmade/hm-gtm/archive/master.zip"
+        }
+      }
+  } ],
+  "require": {
+    "php": ">=5.4",
+    "johnpbloch/wordpress": "4.5.x",
+    "vlucas/phpdotenv": "2.2.x",
+    "composer/installers": "1.0.x",
+    "wpackagist-plugin/buddypress": "2.5.x",
+    "wpackagist-plugin/wordpress-seo": "3.1.x",
+    "wpackagist-plugin/google-sitemap-generator": "4.0.x",
+    "wpackagist-plugin/wp-robots-txt": "1.1.x",
+    "wpackagist-plugin/wp-security-audit-log": "2.4.x",
+    "wpackagist-plugin/brute-force-login-protection": "1.5.x",
+    "wpackagist-plugin/safe-redirect-manager": "1.7.x",
+    "wpackagist-plugin/post-type-archive-links": "1.3.x",
+    "wpackagist-plugin/admin-menu-manager": "1.0.x",
+    "wpackagist-plugin/advanced-custom-fields": "4.4.x",
+    "wpackagist-plugin/custom-contact-forms": "7.8.x",
+    "wpackagist-plugin/wp-mail-smtp": "0.9.x",
+    "wpackagist-plugin/wp-help": "1.4.x",
+    "wpackagist-plugin/cmb2": "2.2.x",
+    "humanmade/hm-gtm": "1.0.x"
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "~2.4",
+    "wp-coding-standards/wpcs": "*",
+    "wpackagist-theme/twentysixteen": "*",
+    "wpackagist-plugin/wordpress-importer": "*",
+    "wpackagist-plugin/debug-bar": "*",
+    "wpackagist-plugin/debug-objects": "*",
+    "wpackagist-plugin/debug-queries": "*",
+    "wpackagist-plugin/query-monitor": "*",
+    "wpackagist-plugin/log-deprecated-notices": "*",
+    "wpackagist-plugin/p3-profiler": "*",
+    "wpackagist-plugin/theme-check": "*",
+    "wpackagist-plugin/rewrite-rules-inspector": "*",
+    "wpackagist-plugin/user-switching": "*",
+    "wpackagist-plugin/vip-scanner": "*"
+  },
+  "extra": {
+    "wordpress-install-dir": "html/wp",
+    "installer-paths": {
+      "html/app/plugins-mu/{$name}/": [
+                "type:wordpress-muplugin",
+                "wpackagist-plugin/cmb2"
+            ],
+      "html/app/plugins/{$name}/": [ "type:wordpress-plugin" ],
+      "html/app/themes/{$name}/": [ "type:wordpress-theme" ]
+    }
+  }
+}

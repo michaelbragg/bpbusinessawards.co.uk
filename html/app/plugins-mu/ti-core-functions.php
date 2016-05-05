@@ -123,8 +123,8 @@ class TI_Core_Functions {
 			'#wpadminbar{background: %1$s !important;}' .
 			'#wpadminbar a.ab-item:focus, #wpadminbar a.ab-item:hover { background: %2$s !important; }' .
 			'</style>',
-			'#f44336',
-			'#d32f2f'
+			'#ff9800',
+			'#f57c00'
 		);
 	}
 
@@ -137,8 +137,8 @@ class TI_Core_Functions {
 			'#wpadminbar{background: %1$s !important;}' .
 			'#wpadminbar a.ab-item:focus, #wpadminbar a.ab-item:hover { background: %2$s !important; }' .
 			'</style>',
-			'#ff9800',
-			'#f57c00'
+			'#009688',
+			'#00796B'
 		);
 	}
 

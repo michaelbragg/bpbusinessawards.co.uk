@@ -74,16 +74,17 @@ class TI_Core_Functions {
 	 * @return bool
 	 */
 	public static function get_instance() {
-		if ( ! self::$instance )
+		if ( ! self::$instance ) {
 			self::$instance = new TI_Core_Functions();
+		}
 		return self::$instance;
 	}
 
-  /**
-   * Add link to front page in admin menu
-   * @since 0.1.0
-   */
-  public function ti_add_home_to_menu() {
+	/**
+		* Add link to front page in admin menu
+	* @since 0.1.0
+	*/
+	public function ti_add_home_to_menu() {
 
 		$homepage_id = get_option( 'page_on_front' );
 
@@ -144,7 +145,7 @@ class TI_Core_Functions {
 }
 
 function ti_core_functions_init() {
-		TI_Core_Functions::get_instance();
+	TI_Core_Functions::get_instance();
 }
 
 add_action( 'plugins_loaded', 'ti_core_functions_init' );

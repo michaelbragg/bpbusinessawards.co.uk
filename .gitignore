@@ -49,10 +49,10 @@ html/app/plugins-mu/*
 !html/app/plugins/index.php
 !html/app/plugins/ctba-entries-2016.php
 !html/app/plugins-mu/index.php
-!html/app/plugins-mu/ctba_categories.php
-!html/app/plugins-mu/ctba_entries.php
-!html/app/plugins-mu/ctba_judges.php
-!html/app/plugins-mu/ctba_partners.php
+!html/app/plugins-mu/ba-categories.php
+!html/app/plugins-mu/ba-entries.php
+!html/app/plugins-mu/ba-judges.php
+!html/app/plugins-mu/ba-partners.php
 !html/app/plugins-mu/ti-core-functions.php
 !html/app/plugins-mu/ti-roles-and-capabilities.php
 !html/app/plugins-mu/ti-widgets.php

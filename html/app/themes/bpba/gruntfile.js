@@ -141,6 +141,7 @@ module.exports = function( grunt ) {
   grunt.registerTask( 'test', ['htmlhint', 'csslint', 'jshint'] );
   grunt.registerTask( 'optim', ['imagemin'] );
   grunt.registerTask( 'dev', ['less:development'] );
+	grunt.registerTask( 'build', ['less:production'] );
   grunt.registerTask( 'serve', ['watch'] );
 
 };

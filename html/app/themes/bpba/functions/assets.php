@@ -104,7 +104,7 @@ function bpba_styles_load_global() {
 }
 
 add_action(
-	'wp_enqueue_styles',
+	'wp_enqueue_scripts',
 	'bpba_styles_load_global',
 	100
 );

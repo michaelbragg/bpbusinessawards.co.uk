@@ -25,7 +25,7 @@ $function_includes = array(
 
 foreach ( $function_includes as $file ) {
 	if ( ! $filepath = locate_template( $file ) ) {
-		trigger_error( sprintf( __( 'Error locating %s for inclusion', 'eecm_waterside' ), $file ), E_USER_ERROR );
+		trigger_error( sprintf( __( 'Error locating %s for inclusion', 'bpba' ), $file ), E_USER_ERROR );
 	}
 	require_once $filepath;
 }
@@ -113,11 +113,6 @@ if ( ! function_exists( 'bpba_setup' ) ) :
 			'link',
 		) );
 
-		// Set up the WordPress core custom background feature.
-		add_theme_support( 'custom-background', apply_filters( 'bpba_custom_background_args', array(
-			'default-color' => 'ffffff',
-			'default-image' => '',
-		) ) );
 	}
 	endif;
 
@@ -152,30 +147,6 @@ function bpba_widgets_init() {
 	) );
 }
 add_action( 'widgets_init', 'bpba_widgets_init' );
-
-/**
- * Enqueue scripts and styles.
- */
-function bpba_scripts() {
-
-	wp_enqueue_style( 'bpba-fonts', '//fast.fonts.net/cssapi/2896c3ef-2b78-4bc2-9652-3329e9098a71.css', array(), '1.0.0', 'all' );
-
-	wp_enqueue_style( 'bpba-style', get_stylesheet_uri(), array( 'bpba-fonts' ), '1.0.0' );
-
-	wp_enqueue_script( 'bpba-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
-
-	wp_enqueue_script( 'bpba-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
-
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
-
-	if ( is_page() && is_page( 'entry' ) ) {
-		wp_enqueue_script( 'bpba-nomination', get_template_directory_uri() . '/js/jquery.nomination.js', array( 'jquery' ), '0.1.0', true );
-	}
-
-}
-add_action( 'wp_enqueue_scripts', 'bpba_scripts' );
 
 /**
  * Alter the default WP Query for Categries post type

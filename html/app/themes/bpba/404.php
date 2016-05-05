@@ -11,7 +11,7 @@ get_header(); ?>
 
 	<div id="primary" class="content-area">
 
-		<main id="main" class="content__main wrapper cf" role="main">
+		<main id="main" class="content__main wrapper cf">
 		  <div class="wrapper__sub">
 		    <article class="ss1-ss4 ms1-ms6 ls1-ls12">
 

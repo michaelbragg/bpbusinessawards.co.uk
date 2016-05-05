@@ -26,12 +26,12 @@
 	<div id="page" class="site">
 		<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'ctba-2016' ); ?></a>
 
-		<header class="header__main site-header fixed cf" id="masthead" role="banner">
+		<header class="header__main site-header fixed cf" id="masthead">
 		  <div class="wrapper__sub">
 
 				<?php echo ctba_2016_custom_logo(); ?>
 
-		    <nav id="site-navigation" role="navigation" class="nav__main">
+		    <nav id="site-navigation" class="nav__main">
 
 		      <a href="#nav-footer" class="navicon navicon__right ls-hidden" aria-controls="primary-menu" aria-expanded="false">Menu</a>
 

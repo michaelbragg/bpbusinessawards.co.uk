@@ -91,7 +91,7 @@
 
 </section>
 
-	<footer id="colophon" class="footer__main wrapper cf" role="contentinfo">
+	<footer id="colophon" class="footer__main wrapper cf">
 
 	  <div class="wrapper__sub">
 

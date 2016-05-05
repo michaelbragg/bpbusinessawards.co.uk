@@ -9,7 +9,11 @@ echo "Install dependencies"
 composer install --no-dev --no-interaction
 
 # Build theme
-grunt build
+cd ./html/app/themes/bpba/
+bower install
+grunt dev
+cd ~/clone
+#grunt build
 
 # Set timestamp
 echo "Set Time Stamp"
@@ -21,7 +25,7 @@ ssh $USERNAME@$HOST "mkdir $DEPLOY_TO/releases/$TIMESTAMP"
 
 # Copy files
 echo "Copy files to server"
-rsync -avz -e "ssh" --exclude="app/themes/bpba/node_modules" --exclude="media/" --exclude="app/languages" ./html/ $USERNAME@$HOST:$DEPLOY_TO/releases/$TIMESTAMP
+rsync -avz -e "ssh" --exclude="/app/themes/bpba/node_modules" --exclude="/media/" --exclude="/app/languages" ./html $USERNAME@$HOST:$DEPLOY_TO/releases/$TIMESTAMP
 
 # Symlink shared folders
 echo "Symlink shared folders"
@@ -30,7 +34,7 @@ ssh $USERNAME@$HOST "ln -s $SHARED/languages $DEPLOY_TO/releases/$TIMESTAMP/app/
 
 ## Symlink previous events
 echo "Symlink previous events"
-ssh $USERNAME@$HOST "ln -s $DEPLOY_TO/archive/2011 $DEPLOY_TO/releases/$TIMESTAMP/2012"
+ssh $USERNAME@$HOST "ln -s $DEPLOY_TO/archive/2011 $DEPLOY_TO/releases/$TIMESTAMP/2011"
 ssh $USERNAME@$HOST "ln -s $DEPLOY_TO/archive/2012 $DEPLOY_TO/releases/$TIMESTAMP/2012"
 ssh $USERNAME@$HOST "ln -s $DEPLOY_TO/archive/2013 $DEPLOY_TO/releases/$TIMESTAMP/2013"
 ssh $USERNAME@$HOST "ln -s $DEPLOY_TO/archive/2014 $DEPLOY_TO/releases/$TIMESTAMP/2014"

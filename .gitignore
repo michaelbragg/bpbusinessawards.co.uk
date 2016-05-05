@@ -72,5 +72,5 @@ html/app/themes/*
 #### BPBA
 html/app/themes/bpba/style.css
 html/app/themes/bpba/editor-style.css
-html/app/themes/bpba/bower_components/
+html/app/themes/bpba/library/
 html/app/themes/bpba/node_modules/

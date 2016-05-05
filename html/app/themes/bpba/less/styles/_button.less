@@ -1,0 +1,61 @@
+
+.btn {
+  border-radius: 7.25px;
+  background: @brand--blue; /* Old browsers */
+  background: -moz-linear-gradient(top, @brand--blue 0%, @brand--blue-dark 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,@brand--blue), color-stop(100%,@brand--blue-dark)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, @brand--blue 0%,@brand--blue-dark 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, @brand--blue 0%,@brand--blue-dark 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, @brand--blue 0%,@brand--blue-dark 100%); /* IE10+ */
+  background: linear-gradient(to bottom, @brand--blue 0%,@brand--blue-dark 100%); /* W3C */
+  font-family: @heading__font-family;
+  color: @brand--white;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+}
+
+  .btn:active,
+  .btn:link,
+  .btn:visited {
+    color: @brand--white;
+  }
+
+  .btn:hover,
+  .btn:focus {
+    -webkit-box-shadow: 0 0 7.25px 3px @brand--blue;
+       -moz-box-shadow: 0 0 7.25px 3px @brand--blue;
+            box-shadow: 0 0 7.25px 3px @brand--blue;
+  }
+
+.btn--primary {
+  background: @brand--gold; /* Old browsers */
+  background: -moz-linear-gradient(top, @brand--gold 0%, @brand--gold-dark 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, @brand--gold), color-stop(100%,@brand--gold-dark)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, @brand--gold 0%, @brand--gold-dark 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, @brand--gold 0%, @brand--gold-dark 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, @brand--gold 0%, @brand--gold-dark 100%); /* IE10+ */
+  background: linear-gradient(to bottom, @brand--gold 0%, @brand--gold-dark 100%); /* W3C */
+}
+
+  .btn--primary:active,
+  .btn--primary:link,
+  .btn--primary:visited {
+    color: @brand--white;
+  }
+
+  .btn--primary:hover,
+  .btn--primary:focus {
+    -webkit-box-shadow: 0 0 7.25px 3px @brand--green;
+       -moz-box-shadow: 0 0 7.25px 3px @brand--green;
+            box-shadow: 0 0 7.25px 3px @brand--green;
+  }
+
+.btn__large {
+  font-size: 1.375em;
+  width: 100%;
+}
+
+.btn__full {
+  width: 100%;
+}

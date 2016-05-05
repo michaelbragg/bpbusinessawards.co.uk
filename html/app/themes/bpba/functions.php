@@ -15,13 +15,13 @@ function acf_hook() {
 /**
  * Load functions files
  */
-$function_includes = [
+$function_includes = array(
 	'functions/helper.php',						// Helper functions
 	'functions/assets.php',						// Scripts and stylesheets
 //	'functions/fields.php',						// Custom Template Admin Fields
 //	'functions/template-tags.php',		// Custom template tags
 	'functions/media.php',							// Updates to media files
-];
+);
 
 foreach ( $function_includes as $file ) {
 	if ( ! $filepath = locate_template( $file ) ) {

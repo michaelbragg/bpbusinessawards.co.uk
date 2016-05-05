@@ -5,12 +5,12 @@
  *
  * Eventually, some of the functionality here could be replaced by core features.
  *
- * @package ctba-2016
+ * @package bpba
  */
 
-if ( ! function_exists( 'ctba_2016_custom_logo' ) ) {
+if ( ! function_exists( 'bpba_custom_logo' ) ) {
 
-	function ctba_2016_custom_logo() {
+	function bpba_custom_logo() {
 
 		$logo = printf(
 			'<a href="%1$s" rel="home"><img class="" src="%2$s" alt="%3$s"></a>',

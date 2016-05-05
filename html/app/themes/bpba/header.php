@@ -29,11 +29,11 @@
 		<header class="header__main site-header fixed cf" id="masthead">
 		  <div class="wrapper__sub">
 
-				<?php echo ctba_2016_custom_logo(); ?>
+				<?php echo bpba_custom_logo(); ?>
 
 		    <nav id="site-navigation" class="nav__main">
 
-		      <a href="#nav-footer" class="navicon navicon__right ls-hidden" aria-controls="primary-menu" aria-expanded="false">Menu</a>
+		      <a href="#nav-footer" class="navicon navicon__right ls-hidden" aria-controls="site-navigation" aria-expanded="false">Menu</a>
 
 		      <?php wp_nav_menu(
 		      	array(

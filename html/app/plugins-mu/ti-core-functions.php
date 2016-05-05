@@ -27,6 +27,45 @@ class TI_Core_Functions {
 			array( $this, 'ti_add_home_to_menu' )
 		);
 
+		if ( 'development' === WP_ENV ) {
+
+			add_action(
+				'wp_head',
+				array( $this, 'ti_development_admin_bar' )
+			);
+
+			add_action(
+				'admin_head',
+				array( $this, 'ti_development_admin_bar' )
+			);
+		}
+
+		if ( 'staging' === WP_ENV ) {
+
+			add_action(
+				'wp_head',
+				array( $this, 'ti_staging_admin_bar' )
+			);
+
+			add_action(
+				'admin_head',
+				array( $this, 'ti_staging_admin_bar' )
+			);
+		}
+
+		if ( 'production' === WP_ENV ) {
+
+			add_action(
+				'wp_head',
+				array( $this, 'ti_production_admin_bar' )
+			);
+
+			add_action(
+				'admin_head',
+				array( $this, 'ti_production_admin_bar' )
+			);
+		}
+
 	}
 
 	/**
@@ -58,6 +97,48 @@ class TI_Core_Functions {
 			4
 		);
 
+	}
+
+	/**
+	 * Change admin bar colour for development site
+	 */
+	public function ti_development_admin_bar() {
+		printf(
+			'<style>' .
+			'#wpadminbar{background: %1$s !important;}' .
+			'#wpadminbar a.ab-item:focus, #wpadminbar a.ab-item:hover { background: %2$s !important; }' .
+			'</style>',
+			'#f44336',
+			'#d32f2f'
+		);
+	}
+
+	/**
+	 * Change admin bar colour for development site
+	 */
+	public function ti_staging_admin_bar() {
+		printf(
+			'<style>' .
+			'#wpadminbar{background: %1$s !important;}' .
+			'#wpadminbar a.ab-item:focus, #wpadminbar a.ab-item:hover { background: %2$s !important; }' .
+			'</style>',
+			'#f44336',
+			'#d32f2f'
+		);
+	}
+
+	/**
+	 * Change admin bar colour for production site
+	 */
+	public function ti_production_admin_bar() {
+		printf(
+			'<style>' .
+			'#wpadminbar{background: %1$s !important;}' .
+			'#wpadminbar a.ab-item:focus, #wpadminbar a.ab-item:hover { background: %2$s !important; }' .
+			'</style>',
+			'#ff9800',
+			'#f57c00'
+		);
 	}
 
 }

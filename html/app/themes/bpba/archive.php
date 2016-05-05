@@ -46,9 +46,9 @@ get_header(); ?>
 		endif; ?>
 		    </article>
 
-		    <aside class="content__aside ss1-ss4 ms1-ms6 ls9-ls12">
+				<aside id="secondary" class="content__aside widget-area ss1-ss4 ms1-ms6 ls9-ls12">
 		      <?php get_sidebar(); ?>
-		    <aside>
+		    </aside>
 
 		  </div>
 		</main>

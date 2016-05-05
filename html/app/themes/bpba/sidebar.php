@@ -12,8 +12,6 @@ if ( ! is_active_sidebar( 'sidebar-1' ) ) {
 }
 ?>
 
-<aside id="secondary" class="widget-area">
-
 <article class="box separator--horizontal" itemscope itemtype="http://schema.org/Event">
 
 	<?php // @TODO allow user to change details via admin ?>
@@ -39,5 +37,3 @@ if ( ! is_active_sidebar( 'sidebar-1' ) ) {
 	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
 </article>
-
-</aside><!-- #secondary -->

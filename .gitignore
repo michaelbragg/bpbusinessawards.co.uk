@@ -47,7 +47,7 @@ html/app/plugins-mu/*
 
 #### White-list Plugins
 !html/app/plugins/index.php
-!html/app/plugins/ctba-entries-2016.php
+!html/app/plugins/bpba-entries-2016.php
 !html/app/plugins-mu/index.php
 !html/app/plugins-mu/ba-categories.php
 !html/app/plugins-mu/ba-entries.php

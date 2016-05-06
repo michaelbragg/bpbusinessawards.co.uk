@@ -69,7 +69,6 @@ $supporter_array = new WP_Query(
 			); ?>
 		</a>
 		<?php endif; ?>
-		</a>
 	<?php endwhile; ?>
 	<!-- end of the loop -->
 

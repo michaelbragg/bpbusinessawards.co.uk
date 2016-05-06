@@ -152,7 +152,7 @@ add_action( 'widgets_init', 'bpba_widgets_init' );
  * Alter the default WP Query for Categries post type
  */
 function change_archive_categories_loop( $query ) {
-	if ( $query->is_main_query() && ! is_admin() && is_post_type_archive( 'ctba_categories' ) ) {
+	if ( $query->is_main_query() && ! is_admin() && is_post_type_archive( 'ba_categories' ) ) {
 		$query->set( 'posts_per_page', '30' );
 		$query->set( 'order', 'ASC' );
 		$query->set( 'orderby', 'menu_order' );

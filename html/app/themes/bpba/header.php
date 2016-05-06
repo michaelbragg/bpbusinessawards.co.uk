@@ -26,12 +26,12 @@
 	<div id="page" class="site">
 		<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'ctba-2016' ); ?></a>
 
-		<header class="header__main site-header fixed cf" id="masthead">
+		<header class="header__main site-header fixed cf" itemscope="itemscope" itemtype="http://schema.org/WPHeader" id="masthead">
 		  <div class="wrapper__sub">
 
 				<?php echo bpba_custom_logo(); ?>
 
-		    <nav id="site-navigation" class="nav__main">
+		    <nav id="site-navigation" class="nav__main" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
 
 		      <a href="#nav-footer" class="navicon navicon__right ls-hidden" aria-controls="site-navigation" aria-expanded="false">Menu</a>
 

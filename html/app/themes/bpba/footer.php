@@ -91,7 +91,7 @@
 
 </section>
 
-	<footer id="colophon" class="footer__main wrapper cf">
+	<footer id="colophon" class="footer__main wrapper cf" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
 
 	  <div class="wrapper__sub">
 

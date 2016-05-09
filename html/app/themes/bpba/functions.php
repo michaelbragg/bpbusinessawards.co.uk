@@ -192,6 +192,32 @@ function my_front_end_login_fail( $username ) {
 add_action( 'wp_login_failed', 'my_front_end_login_fail' );
 
 /**
+ * WP Admin login branding
+ */
+function admin_login_branding() { ?>
+<style type="text/css">
+body {
+	background-color: rgb(25,63,126) !important;
+}
+body.login div#login h1 a {
+	width: 272px;
+	height: 96px;
+	background-image: url('<?php echo get_template_directory_uri() . '/gui/logo_wp-admin.png'; ?>');
+  background-size: 100%;
+}
+.login #nav {
+	color: rgb(255,255,255) !important;
+}
+.login #nav a,
+.login #backtoblog a {
+	color: rgb(255,255,255) !important;
+}
+</style>
+<?php }
+
+add_action( 'login_enqueue_scripts', 'admin_login_branding' );
+
+/**
  * Set up Editor stylesheet
  */
 function bpba_add_editor_styles() {

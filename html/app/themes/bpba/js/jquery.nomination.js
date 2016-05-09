@@ -11,7 +11,7 @@
 		heading = ( 'undefined' !== typeof heading ? heading : 'Oops' );
 		message = ( 'undefined' !== typeof message ? message : 'Looks like something has gone wrong' );
 
-		$( '#ctba-alert' )
+		$( '#bpba-alert' )
 			.clone()
 			.prependTo( location )
 			.attr( 'id', name )
@@ -42,17 +42,17 @@
 	function limitCategoriesSelection() {
 
 		// Get the ammount of categories checked
-		var categories = $( '.cmb2-id-ctba-entries-2016-categories .cmb2-checkbox-list input:checked' ).length;
+		var categories = $( '.cmb2-id-bpba-entries-2016-categories .cmb2-checkbox-list input:checked' ).length;
 
 		// Check if 3 catergoies are chosen
 		if ( 3 <= categories ) {
-			$( '.cmb2-id-ctba-entries-2016-categories  .cmb2-checkbox-list input:checkbox:not( :checked )' ).attr( 'disabled', true );
-			addMessage( '.cmb2-id-ctba-entries-2016-categories', 'alert-category-limit', 'info', 'Info', 'Entry&rsquo;s are limited to 3 categories.' );
+			$( '.cmb2-id-bpba-entries-2016-categories  .cmb2-checkbox-list input:checkbox:not( :checked )' ).attr( 'disabled', true );
+			addMessage( '.cmb2-id-bpba-entries-2016-categories', 'alert-category-limit', 'info', 'Info', 'Entry&rsquo;s are limited to 3 categories.' );
 		}
 
 		// Check if less than 3 catergoies are chosen
 		if ( 3 > categories ) {
-			$( '.cmb2-id-ctba-entries-2016-categories .cmb2-checkbox-list input:checkbox:not( :checked )' ).attr( 'disabled', false );
+			$( '.cmb2-id-bpba-entries-2016-categories .cmb2-checkbox-list input:checkbox:not( :checked )' ).attr( 'disabled', false );
 			removeMessage( '#alert-category-limit' );
 		}
 
@@ -65,7 +65,7 @@
 	function toggleCategoryDisplay() {
 
 		// Get all check boxes that are not checked
-		var checkedValues = $( '.cmb2-id-ctba-entries-2016-categories .cmb2-option:not( :checked )' )
+		var checkedValues = $( '.cmb2-id-bpba-entries-2016-categories .cmb2-option:not( :checked )' )
 												 .map(function() {
 														return this.value;
 												 }).get();
@@ -76,7 +76,7 @@
 		});
 
 		// Checkbox clicked function
-		$( '.cmb2-id-ctba-entries-2016-categories .cmb2-checkbox-list input' ).click(function() {
+		$( '.cmb2-id-bpba-entries-2016-categories .cmb2-checkbox-list input' ).click(function() {
 
 			// Get value from input box
 			var _catid = $( this ).val();
@@ -97,7 +97,7 @@
 
 	$( document ).ready( limitCategoriesSelection() );
 
-	$( '.cmb2-id-ctba-entries-2016-categories .cmb2-checkbox-list input' )
+	$( '.cmb2-id-bpba-entries-2016-categories .cmb2-checkbox-list input' )
 		.on( 'click', limitCategoriesSelection );
 
 } )( jQuery );

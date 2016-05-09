@@ -1,8 +1,8 @@
 <?php /* Template Name: Entry */
 
 if ( ! is_user_logged_in() ) {
-  wp_redirect( home_url( $path = 'login' ) );
-  exit;
+	wp_redirect( home_url( $path = 'login' ) );
+	exit;
 }
 
 $entry = get_query_var( 'entry' );
@@ -10,19 +10,20 @@ $object_id = ( get_query_var( 'entry' ) !== '' ? $entry : 0 );
 
 // Check to see if this is a new post or belongs to ctba entries
 // post type
-if( ( get_post_type( $object_id ) !== 'ctba-entries' ) && ( $object_id != 0 ) ){
+if ( ( get_post_type( $object_id ) !== 'bpba-entries' ) && ( $object_id != 0 ) ) {
 			remove_query_arg( 'entry' );
 			wp_redirect( home_url( $path = 'nominate/entry' ) );
 }
 
 // Check to see if the current entry was made by the current user
 global $current_user;
-	get_currentuserinfo();
+get_currentuserinfo();
 
-	if ( $current_user->ID != get_post_field('post_author', $object_id ) && ( $object_id != 0 ) )  {
-			remove_query_arg( 'entry' );
-			wp_redirect( home_url( $path = 'nominate/entry' ) );
-	}
+if ( $current_user->ID != get_post_field('post_author', $object_id ) && ( $object_id != 0 ) ) {
+		remove_query_arg( 'entry' );
+		wp_redirect( home_url( $path = 'nominate/entry' ) );
+}
+
 
 get_header(); ?>
 

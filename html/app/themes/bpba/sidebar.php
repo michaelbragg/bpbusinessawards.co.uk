@@ -24,7 +24,7 @@ if ( ! is_active_sidebar( 'sidebar-1' ) ) {
   <p itemprop="location" itemscope itemtype="http://schema.org/Place">
   <strong itemprop="name">The&nbsp;ICC, Birmingham</strong>,<br><span itemprop="streetAddress">Broad&nbsp;St</span>,
 	<span itemprop="addressLocality">Birmingham</span>. <span itemprop="postalCode">B1&nbsp;2EA</span></p>
-	<p>Champagne reception from <span itemprop="doorTime" content="18:30">6:30pm</span>.</p>
+	<p>Prosecco reception from <span itemprop="doorTime" content="18:30">6:30pm</span>.</p>
 
 </article>
 

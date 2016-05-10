@@ -33,7 +33,7 @@ $supporter_array = new WP_Query(
 			'publish',
 		),
 		'nopaging'    => true,
-		'orderby'   => 'title',
+		'orderby'   => 'menu_order title',
 		'order'     => 'ASC',
 		'tax_query' => array(
 			array(

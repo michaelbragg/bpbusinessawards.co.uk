@@ -161,7 +161,18 @@ function change_archive_categories_loop( $query ) {
 
 add_action( 'pre_get_posts', 'change_archive_categories_loop' );
 
+/**
+ * Alter the default WP Query for Categries post type
+ */
+function change_archive_partners_loop( $query ) {
+	if ( $query->is_main_query() && ! is_admin() && is_post_type_archive( 'ba-partners' ) ) {
+		$query->set( 'posts_per_page', '50' );
+		$query->set( 'order', 'ASC' );
+		$query->set( 'orderby', 'menu_order title' );
+	}
+}
 
+add_action( 'pre_get_posts', 'change_archive_partners_loop' );
 /**
  * Add custom query variable for failed logins.
  */

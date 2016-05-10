@@ -2,6 +2,7 @@
 
 ## Development
 _assets
+config/environments/development.php
 
 ## System
 

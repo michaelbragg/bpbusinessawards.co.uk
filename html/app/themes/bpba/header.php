@@ -58,7 +58,7 @@
   <section class="wrapper__sub">
 
     <div class="hero__content">
-      <?php if( get_field( 'hero_tagline' ) ){ ?><p class="hero__copy gamma"><?php the_field( 'hero_tagline' ); ?></p><?php } else { echo '<p class="hero__copy gamma">Celebrate your success in business with the Birmingham Post.</p>'; } ?>
+      <?php if( get_field( 'hero_tagline' ) ){ ?><h4 class="hero__copy gamma"><?php the_field( 'hero_tagline' ); ?></h4><?php } else { echo '<h4 class="hero__copy gamma">Celebrate your success in business with the Birmingham Post.</h4>'; } ?>
       <?php if( get_field( 'hero_btn_link' ) ){ ?><a class="hero__btn btn btn--primary" href="<?php the_field( 'hero_btn_link' ); ?>"><?php the_field( 'hero_btn_text' ); ?></a><?php } ?>
     </div>
 

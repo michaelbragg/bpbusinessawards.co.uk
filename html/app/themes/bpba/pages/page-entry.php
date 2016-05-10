@@ -10,7 +10,7 @@ $object_id = ( get_query_var( 'entry' ) !== '' ? $entry : 0 );
 
 // Check to see if this is a new post or belongs to ctba entries
 // post type
-if ( ( get_post_type( $object_id ) !== 'bpba-entries' ) && ( $object_id != 0 ) ) {
+if ( ( get_post_type( $object_id ) !== 'ba-entries' ) && ( $object_id != 0 ) ) {
 			remove_query_arg( 'entry' );
 			wp_redirect( home_url( $path = 'nominate/entry' ) );
 }

@@ -14,6 +14,9 @@ $get_entry = get_entry( $current_user->ID );
 // Get current users details
 $current_user = wp_get_current_user();
 
+// Check if the entry status
+$entry_status = ( get_query_var( 'status' ) === 'submitted' ? true : false );
+
 get_header(); ?>
 
 <div id="primary" class="content-area">
@@ -33,6 +36,20 @@ get_header(); ?>
 				</header><!-- .entry-header -->
 
 				<div class="entry-content">
+
+				<?php if ( true === $entry_status ) : ?>
+					<section class="alert alert--message alert--positive alert--type box" role="alert">
+						<!--<a class="alert__close" href="#">×</a>-->
+						<p>
+						<?php printf(
+							'<strong>%1$s!</strong> %2$s</p>',
+							esc_html__( 'Thanks', 'bpba' ),
+							esc_html__( 'Your nomination has been submitted.', 'bpba' )
+						); ?>
+						</p>
+
+					</section>
+				<?php endif; ?>
 
 				<?php the_content(); ?>
 

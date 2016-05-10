@@ -26,8 +26,8 @@ $entry_status = ( get_query_var( 'status' ) === 'saved' ? true : false );
 				<p>
 				<?php printf(
 					'<strong>%1$s!</strong> %2$s</p>',
-					esc_html__( 'Saved', 'bpba-2016' ),
-					esc_html__( 'Your entry has been saved. Feel free to come back and edited it before submitting.', 'bpba-2016' )
+					esc_html__( 'Saved', 'bpba' ),
+					esc_html__( 'Your entry has been saved. Feel free to come back and edited it before submitting.', 'bpba' )
 				); ?>
 				</p>
 
@@ -115,7 +115,7 @@ function get_meta_boxes(){
 }
 
 
-echo '<form class="cmb-form" method="post" id="bpba-2016-entries-form" enctype="multipart/form-data" encoding="multipart/form-data">
+echo '<form class="cmb-form" method="post" id="bpba-2016-entries-form" enctype="multipart/form-data">
     <input type="hidden" name="object_id" value="'. esc_attr( $object_id ) .'">';
 
 $args = array(
@@ -163,8 +163,8 @@ foreach ( get_meta_boxes() as $metabox => $options ) { // loop over config array
 	<p>
 	<?php printf(
 		'<strong>%1$s</strong> %2$s</p>',
-		esc_html__( 'Info', 'bpba-2016' ),
-		esc_html__( 'Entry&rsquo;s are limited to 3 categories.', 'bpba-2016' )
+		esc_html__( 'Info', 'bpba' ),
+		esc_html__( 'Entry&rsquo;s are limited to 3 categories.', 'bpba' )
 	); ?>
 	</p>
 

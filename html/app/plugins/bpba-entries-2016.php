@@ -43,7 +43,7 @@ function bpba_entries_2016_form() {
 	$common = new_cmb2_box( array(
 		'id'           => $prefix . 'common',
 		'title'				 => __( 'Common Questions', 'bpba-entries-2016' ),
-		'object_types' => array( 'ctba-entries', ),
+		'object_types' => array( 'ba-entries', ),
 		//'hookup'       => false,
 		//'save_fields'  => false,
 		'context'			 => 'normal',
@@ -198,7 +198,7 @@ function bpba_entries_2016_form() {
 	$notforprofit = new_cmb2_box( array(
 		'id'           => $prefix . 'notforprofit',
 		'title'				 => __( 'Not for Profit Organisation Award', 'bpba-entries-2016' ),
-		'object_types' => array( 'ctba-entries', ),
+		'object_types' => array( 'ba-entries', ),
 		//'hookup'       => false,
 		//'save_fields'  => false,
 		'context'			 => 'normal',
@@ -285,7 +285,7 @@ function bpba_entries_2016_form() {
 	$community = new_cmb2_box( array(
 		'id'           => $prefix . 'community',
 		'title'				 => __( 'Contribution to the Community Award', 'bpba-entries-2016' ),
-		'object_types' => array( 'ctba-entries', ),
+		'object_types' => array( 'ba-entries', ),
 		//'hookup'       => false,
 		//'save_fields'  => false,
 		'context'			 => 'normal',
@@ -381,7 +381,7 @@ function bpba_entries_2016_form() {
 	$export = new_cmb2_box( array(
 		'id'           => $prefix . 'export',
 		'title'				 => __( 'Export Award', 'bpba-entries-2016' ),
-		'object_types' => array( 'ctba-entries', ),
+		'object_types' => array( 'ba-entries', ),
 		//'hookup'       => false,
 		//'save_fields'  => false,
 		'context'			 => 'normal',
@@ -477,7 +477,7 @@ function bpba_entries_2016_form() {
 	$creative = new_cmb2_box( array(
 		'id'           => $prefix . 'creative',
 		'title'				 => __( 'Creative Industries Business of the Year', 'bpba-entries-2016' ),
-		'object_types' => array( 'ctba-entries', ),
+		'object_types' => array( 'ba-entries', ),
 		//'hookup'       => false,
 		//'save_fields'  => false,
 		'context'			 => 'normal',
@@ -555,7 +555,7 @@ function bpba_entries_2016_form() {
 	$retail = new_cmb2_box( array(
 		'id'           => $prefix . 'retail',
 		'title'				 => __( 'Retail Business of the Year Award', 'bpba-entries-2016' ),
-		'object_types' => array( 'ctba-entries', ),
+		'object_types' => array( 'ba-entries', ),
 		//'hookup'       => false,
 		//'save_fields'  => false,
 		'context'			 => 'normal',
@@ -642,7 +642,7 @@ function bpba_entries_2016_form() {
 	$technology = new_cmb2_box( array(
 		'id'           => $prefix . 'technology',
 		'title'				 => __( 'Excellence in Science &amp; Technology Award', 'bpba-entries-2016' ),
-		'object_types' => array( 'ctba-entries', ),
+		'object_types' => array( 'ba-entries', ),
 		//'hookup'       => false,
 		//'save_fields'  => false,
 		'context'			 => 'normal',
@@ -701,7 +701,7 @@ function bpba_entries_2016_form() {
 	$manufacturing = new_cmb2_box( array(
 		'id'           => $prefix . 'manufacturing',
 		'title'				 => __( 'Excellence in Manufacturing Award', 'bpba-entries-2016' ),
-		'object_types' => array( 'ctba-entries', ),
+		'object_types' => array( 'ba-entries', ),
 		//'hookup'       => false,
 		//'save_fields'  => false,
 		'context'			 => 'normal',
@@ -807,7 +807,7 @@ function bpba_entries_2016_form() {
 	$marketing = new_cmb2_box( array(
 		'id'           => $prefix . 'marketing',
 		'title'				 => __( 'Sales &amp; Marketing Award', 'bpba-entries-2016' ),
-		'object_types' => array( 'ctba-entries', ),
+		'object_types' => array( 'ba-entries', ),
 		//'hookup'       => false,
 		//'save_fields'  => false,
 		'context'			 => 'normal',
@@ -886,7 +886,7 @@ function bpba_entries_2016_form() {
 	$legal = new_cmb2_box( array(
 		'id'           => $prefix . 'legal',
 		'title'				 => __( 'Legal Services Award', 'bpba-entries-2016' ),
-		'object_types' => array( 'ctba-entries' ),
+		'object_types' => array( 'ba-entries' ),
 		'context'			 => 'normal',
 		'priority'		 => 'default',
 		'show_names'	 => 'true',
@@ -962,7 +962,7 @@ function bpba_entries_2016_form() {
 	$financial = new_cmb2_box( array(
 		'id'           => $prefix . 'financial',
 		'title'				 => __( 'Financial Services Award', 'bpba-entries-2016' ),
-		'object_types' => array( 'ctba-entries' ),
+		'object_types' => array( 'ba-entries' ),
 		'context'			 => 'normal',
 		'priority'		 => 'default',
 		'show_names'	 => 'true',
@@ -1038,7 +1038,7 @@ function bpba_entries_2016_form() {
 	$entrepreneur = new_cmb2_box( array(
 		'id'           => $prefix . 'entrepreneur',
 		'title'				 => __( 'Business Entrepreneur of the Year', 'bpba-entries-2016' ),
-		'object_types' => array( 'ctba-entries', ),
+		'object_types' => array( 'ba-entries', ),
 		//'hookup'       => false,
 		//'save_fields'  => false,
 		'context'			 => 'normal',
@@ -1315,7 +1315,7 @@ function bpba_entries_2016_form() {
 	$newbusiness = new_cmb2_box( array(
 		'id'           => $prefix . 'newbusiness',
 		'title'				 => __( 'New Business of the Year', 'bpba-entries-2016' ),
-		'object_types' => array( 'ctba-entries', ),
+		'object_types' => array( 'ba-entries', ),
 		//'hookup'       => false,
 		//'save_fields'  => false,
 		'context'			 => 'normal',
@@ -1507,7 +1507,7 @@ function bpba_entries_2016_form() {
 	$smallbusiness = new_cmb2_box( array(
 		'id'           => $prefix . 'smallbusiness',
 		'title'				 => __( 'Small Business of the Year', 'bpba-entries-2016' ),
-		'object_types' => array( 'ctba-entries', ),
+		'object_types' => array( 'ba-entries', ),
 		//'hookup'       => false,
 		//'save_fields'  => false,
 		'context'			 => 'normal',
@@ -1689,7 +1689,7 @@ function bpba_entries_2016_form() {
 	$companyyear = new_cmb2_box( array(
 		'id'           => $prefix . 'companyyear',
 		'title'				 => __( 'Company of the Year', 'bpba-entries-2016' ),
-		'object_types' => array( 'ctba-entries', ),
+		'object_types' => array( 'ba-entries', ),
 		//'hookup'       => false,
 		//'save_fields'  => false,
 		'context'			 => 'normal',
@@ -1965,7 +1965,7 @@ function bpba_entries_2016_form() {
 	$additional = new_cmb2_box( array(
 		'id'           => $prefix . 'additional',
 		'title'				 => __( 'Confirm your entry', 'bpba-entries-2016' ),
-		'object_types' => array( 'ctba-entries', ),
+		'object_types' => array( 'ba-entries', ),
 		//'hookup'       => false,
 		//'save_fields'  => false,
 		'context'			 => 'normal',
@@ -2011,10 +2011,10 @@ function wds_frontend_cmb2_get( $metabox_id, $object_id ) {
  *
  * @return void
  */
-function ctba_cntries_2016_handle_frontend_post_form_submission() {
+function ba_entries_2016_handle_frontend_post_form_submission() {
 
 	// Check to see if this is a new post or belongs to ctba entries post type
-	if ( ( get_post_type( $_POST['object_id'] ) !== 'ctba-entries' ) && ( $_POST['object_id'] != 0 ) && ( $_POST['object_id'] < 0 ) ) {
+	if ( ( get_post_type( $_POST['object_id'] ) !== 'ba-entries' ) && ( $_POST['object_id'] != 0 ) && ( $_POST['object_id'] < 0 ) ) {
 		remove_query_arg( 'entry' );
 		wp_redirect( home_url( $path = 'nominate/entry' ) );
 	}
@@ -2052,7 +2052,7 @@ function ctba_cntries_2016_handle_frontend_post_form_submission() {
 	$post_data['post_content'] = '';
 
 	// Set the post type we want to submit.
-	$post_data['post_type'] = 'ctba-entries';
+	$post_data['post_type'] = 'ba-entries';
 	// Set the status of of post
 	$post_data['post_status'] = ( 'on' === $_POST['bpba_entries_2016_additional_submit'] ? 'publish' : 'pending' );
 
@@ -2076,7 +2076,6 @@ function ctba_cntries_2016_handle_frontend_post_form_submission() {
 	}
 
 	$array = array(
-		'_bpba_entries_2016_notforprofit',
 		'_bpba_entries_2016_companyyear',
 		'_bpba_entries_2016_smallbusiness',
 		'_bpba_entries_2016_newbusiness',
@@ -2144,4 +2143,4 @@ function ctba_cntries_2016_handle_frontend_post_form_submission() {
 	exit;
 }
 
-add_action( 'cmb2_after_init', 'ctba_cntries_2016_handle_frontend_post_form_submission' );
+add_action( 'cmb2_after_init', 'ba_entries_2016_handle_frontend_post_form_submission' );

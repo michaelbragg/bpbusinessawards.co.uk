@@ -1987,7 +1987,7 @@ function bpba_entries_2016_form() {
 	) );
 
 	$additional->add_field( array(
-		'name'							=> __( 'Finalise Sub', 'bpba-entries-2016' ),
+		'name'							=> __( 'Finalise Submission', 'bpba-entries-2016' ),
 		'description'				=> __( 'Please tick to finalise the submission of this entry and you have the and agree to the T&C&rsquo;s.', 'bpba-entries-2016' ),
 		'id'								=> 'bpba_entries_2016_additional_submit',
 		'type'							=> 'checkbox',

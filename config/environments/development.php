@@ -14,8 +14,8 @@ define( 'SCRIPT_DEBUG', false );
 define( 'SAVEQUERIES', true );
 
 // Configure proxy Server
-define( 'WP_PROXY_HOST', 'proxy' );
-define( 'WP_PROXY_PORT', '3128' );
+//define( 'WP_PROXY_HOST', 'proxy' );
+//define( 'WP_PROXY_PORT', '3128' );
 //define( 'WP_PROXY_USERNAME', '' );
 //define( 'WP_PROXY_PASSWORD', '' );
 //define( 'WP_PROXY_BYPASS_HOSTS', 'localhost' );

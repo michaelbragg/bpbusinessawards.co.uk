@@ -10,6 +10,8 @@
 
 class BA_Partners {
 
+	protected $metabox_id = '_ba_partners_';
+
 	public function __construct() {
 
 		add_action(
@@ -34,6 +36,11 @@ class BA_Partners {
 				$this,
 				'explain_feature_image',
 			)
+		);
+
+		add_action(
+			'cmb2_init',
+			array( $this, 'partner_url_metabox' )
 		);
 
 	}
@@ -179,6 +186,31 @@ class BA_Partners {
 
 	}
 
+	public function partner_url_metabox() {;
+
+		$profile = new_cmb2_box( array(
+			'id'						=> $this->metabox_id . 'profile',
+			'title'				 	=> __( 'Company Details', 'ba-partners' ),
+			'description'		=> __( 'Add the partners website address.', 'ba-partners' ),
+			'object_types'	=> array( 'ba-partners', ),
+			'context'				=> 'normal',
+			'priority'			=> 'high',
+			'show_names'		=> 'true',
+		) );
+
+		$profile->add_field( array(
+			'id'						=> $this->metabox_id . 'partners_url',
+			'name'				 	=> __( 'URL', 'ba-partners' ),
+			'description'		=> __( 'Add the partners website address.', 'ba-partners' ),
+			'type'					=> 'text_url',
+			'protocols'			=> array( 'http', 'https', 'mailto' ),
+			'attributes'		=> array(
+			'placeholder'		=> __( 'eg, http://www.example.co.uk', 'ba-partners' ),
+			'class'					=> '',
+			),
+		) );
+	}
+
 	public function print_header_scripts() {
 
 	}
@@ -186,6 +218,17 @@ class BA_Partners {
 
 	}
 
+}
+
+/**
+ * A function accessible via the front-end of the theme that will
+ * return the swatches associated with the current post ID.
+ *
+ * @since    1.0.0
+ *
+*/
+function ba_partners_get_url() {
+	return get_post_meta( get_the_ID(), 'ba_partners_partners_url', true );
 }
 
 function ba_partners_init() {

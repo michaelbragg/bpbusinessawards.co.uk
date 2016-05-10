@@ -35,7 +35,7 @@
 			) );
 			?>
 
-			<?php if ( get_field( 'ba-partners-url' ) ) : ?><p><a href="<?php echo esc_url( get_field( 'ba-partners-url' ) ); ?>" target="_blank" class="outbound link"  rel="nofollow"><?php the_title(); ?></a></p><?php endif; ?>
+			<?php if ( ba_partners_get_url() ) : ?><p><a href="<?php echo esc_url( ba_partners_get_url() ); ?>" target="_blank" class="outbound link"  rel="nofollow"><?php the_title(); ?></a></p><?php endif; ?>
 
 		<?php
 			wp_link_pages( array(
@@ -46,6 +46,6 @@
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-		<?php ctba_2016_entry_footer(); ?>
+		<?php ba_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->

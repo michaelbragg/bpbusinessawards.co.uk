@@ -47,7 +47,7 @@ get_header(); ?>
 			  <articles class="block__content partners-item__content">
 			    <h3><?php the_title(); ?></h3>
 			    <p>
-						<a href="<?php echo esc_url( get_permalink() ); ?>">View Profile</a><?php if ( get_field( 'ba-partners-url' ) ) : ?> | <a target="_blank" class="outbound link" href="<?php echo esc_url( get_field( 'ba-partners-url' ) ); ?>" rel="nofollow">View Website</a><?php endif; ?>
+						<a href="<?php echo esc_url( get_permalink() ); ?>">View Profile</a><?php if ( ba_partners_get_url() ) : ?> | <a target="_blank" class="outbound link" href="<?php echo esc_url( ba_partners_get_url() ); ?>" rel="nofollow">View Website</a><?php endif; ?>
 					</p>
 			  </articles>
 			</li>

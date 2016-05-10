@@ -44,6 +44,6 @@
 				'after'  => '</div>',
 			) );
 		?>
-		<?php ctba_2016_entry_footer(); ?>
+		<?php ba_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->

@@ -57,7 +57,7 @@ get_header(); ?>
 
 						<input type="hidden" name="redirect_to" value="<?php echo esc_url( home_url( 'nominate/' ) ); ?>">
 
-						<button class="btn btn__large btn--primary" type="submit" name="submit" id="submit"><?php esc_html_e( 'Login', 'ctba-2016' ); ?></button>
+						<button class="btn btn__large" type="submit" name="submit" id="submit"><?php esc_html_e( 'Login', 'ctba-2016' ); ?></button>
 
 					</fieldset>
 

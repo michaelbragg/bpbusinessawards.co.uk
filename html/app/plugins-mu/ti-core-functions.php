@@ -106,8 +106,7 @@ class TI_Core_Functions {
 	public function ti_development_admin_bar() {
 		printf(
 			'<style>' .
-			'#wpadminbar{background: %1$s !important;}' .
-			'#wpadminbar a.ab-item:focus, #wpadminbar a.ab-item:hover { background: %2$s !important; }' .
+			'#wpcontent #wpadminbar{ background: %1$s; }' .
 			'#adminmenuwrap { background: repeating-linear-gradient(45deg, #23282d, #23282d 15px, %1$s 15px, %1$s 30px);}' .
 			'</style>',
 			'#f44336',
@@ -121,8 +120,7 @@ class TI_Core_Functions {
 	public function ti_staging_admin_bar() {
 		printf(
 			'<style>' .
-			'#wpadminbar{background: %1$s !important;}' .
-			'#wpadminbar a.ab-item:focus, #wpadminbar a.ab-item:hover { background: %2$s !important; }' .
+			'#wpcontent #wpadminbar{ background: %1$s; }' .
 			'#adminmenuwrap { background: repeating-linear-gradient(45deg, #23282d, #23282d 15px, %1$s 15px, %1$s 30px);}' .
 			'</style>',
 			'#ff9800',
@@ -136,8 +134,7 @@ class TI_Core_Functions {
 	public function ti_production_admin_bar() {
 		printf(
 			'<style>' .
-			'#wpadminbar{background: %1$s !important;}' .
-			'#wpadminbar a.ab-item:focus, #wpadminbar a.ab-item:hover { background: %2$s !important; }' .
+			'#wpcontent #wpadminbar{ background: %1$s; }' .
 			'#adminmenuwrap { background: repeating-linear-gradient(45deg, #23282d, #23282d 15px, %1$s 15px, %1$s 30px);}' .
 			'</style>',
 			'#009688',

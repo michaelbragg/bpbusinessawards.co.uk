@@ -108,6 +108,7 @@ class TI_Core_Functions {
 			'<style>' .
 			'#wpadminbar{background: %1$s !important;}' .
 			'#wpadminbar a.ab-item:focus, #wpadminbar a.ab-item:hover { background: %2$s !important; }' .
+			'#adminmenuwrap { background: repeating-linear-gradient(45deg, #23282d, #23282d 15px, %1$s 15px, %1$s 30px);}' .
 			'</style>',
 			'#f44336',
 			'#d32f2f'
@@ -122,6 +123,7 @@ class TI_Core_Functions {
 			'<style>' .
 			'#wpadminbar{background: %1$s !important;}' .
 			'#wpadminbar a.ab-item:focus, #wpadminbar a.ab-item:hover { background: %2$s !important; }' .
+			'#adminmenuwrap { background: repeating-linear-gradient(45deg, #23282d, #23282d 15px, %1$s 15px, %1$s 30px);}' .
 			'</style>',
 			'#ff9800',
 			'#f57c00'
@@ -136,6 +138,7 @@ class TI_Core_Functions {
 			'<style>' .
 			'#wpadminbar{background: %1$s !important;}' .
 			'#wpadminbar a.ab-item:focus, #wpadminbar a.ab-item:hover { background: %2$s !important; }' .
+			'#adminmenuwrap { background: repeating-linear-gradient(45deg, #23282d, #23282d 15px, %1$s 15px, %1$s 30px);}' .
 			'</style>',
 			'#009688',
 			'#00796B'

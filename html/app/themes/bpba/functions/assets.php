@@ -51,6 +51,19 @@ wp_register_script(
 	true
 );
 
+wp_register_script(
+	'bpba-fitvids',
+	get_template_directory_uri() . '/library/FitVids/jquery.fitvids.js',
+	array( 'jquery' ),
+	'1.1.0',
+	true
+);
+
+wp_add_inline_script(
+	'bpba-fitvids',
+	'(function( $ ) { $(document).ready(function(){$(".entry-content").fitVids();});} )( jQuery );'
+);
+
 
 /**
  * Register styles
@@ -85,6 +98,11 @@ function bpba_scripts_load_global() {
 	if ( is_page() && is_page( 'entry' ) ) {
 		wp_enqueue_script( 'bpba-nomination' );
 	}
+
+	if ( is_page() && is_front_page() ) {
+		wp_enqueue_script( 'bpba-fitvids' );
+	}
+
 }
 
 add_action(

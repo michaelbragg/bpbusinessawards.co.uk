@@ -34,7 +34,8 @@ $entry_status = ( get_query_var( 'status' ) === 'saved' ? true : false );
 			</section>
 		<?php endif; ?>
 
-		<p>Please use the questions below as a guide and feel free to expand on these by providing supporting documents as you wish.</p>
+		<?php the_content(); ?>
+
 <?php
 
 function get_meta_boxes(){

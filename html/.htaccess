@@ -197,4 +197,4 @@ order deny,allow
 # END Brute Force Login Protection
 
 # This allows you to redirect index page to a specific subfolder
-Redirect 301 /index.html http://www.bpbusinessawards.co.uk/2015/
+Redirect 301 /index.html http://www.bpbusinessawards.co.uk/2016/

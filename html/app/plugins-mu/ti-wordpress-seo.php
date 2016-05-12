@@ -17,11 +17,71 @@ class TI_WordPress_SEO {
 	 */
 	private static $instance = false;
 
+	protected $user;
+
 	/**
 	 * Add required hooks
 	 */
 	function __construct() {
 
+		// Get current users details
+		add_action(
+			'init',
+			array( $this, 'ti_get_user' )
+		);
+
+		// Run actions once WordPress has initialized
+		add_action(
+			'init',
+			array( $this, 'ti_init' )
+		);
+
+	}
+
+	/**
+	 * Handle requests for the instance.
+	 *
+	 * @since 0.1.0
+	 * @return bool
+	 */
+	public static function get_instance() {
+		if ( ! self::$instance ) {
+			self::$instance = new TI_WordPress_SEO();
+		}
+		return self::$instance;
+	}
+
+	/**
+	 * Get current users details
+	 * @since 0.1.0
+	 */
+
+	public function ti_get_user() {
+		// Get an instance of the current user
+		$user_id = wp_get_current_user()->ID;
+		$current_user = new WP_User( $user_id );
+		// Set protected variable
+		$this->user = $current_user;
+	}
+
+	/**
+	 * Check users capabilities
+	 * @since 0.1.0
+	 */
+	public function ti_has_user_capability( $capability ) {
+		if ( $this->user->has_cap( $capability ) ) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * Hooks to run on WordPress initialization
+	 * @since 0.1.0
+	 */
+	public function ti_init() {
+
+		// For all users
 		add_action(
 			'wp_before_admin_bar_render',
 			array( $this, 'ti_admin_bar_seo_cleanup' )
@@ -32,38 +92,27 @@ class TI_WordPress_SEO {
 			array( $this, 'ti_remove_dashboard_widgets' )
 		);
 
-  	/* If user is Author or below */
-  	if ( !current_user_can( 'publish_pages' ) ) {
+		/* If user is Author or below */
+		if ( ! $this->ti_has_user_capability( 'publish_pages' ) ) {
 
-  		add_action(
+			add_action(
 				'add_meta_boxes',
 				array( $this, 'ti_remove_yoast_metabox' ),
 				99
 			);
 
-  		add_filter(
-  			'manage_edit-post_columns',
-  			array( $this, 'ti_remove_yoast_columns' )
+			add_filter(
+				'manage_edit-post_columns',
+				array( $this, 'ti_remove_yoast_columns' )
 			);
 
-	    add_filter(
-	    	'manage_edit-page_columns',
-	    	array( $this, 'ti_remove_yoast_columns' )
-    	);
+			add_filter(
+				'manage_edit-page_columns',
+				array( $this, 'ti_remove_yoast_columns' )
+			);
 
-  	}
+		}
 
-	}
-
-	/**
-	 * Handle requests for the instance.
-	 *
-	 * @return bool
-	 */
-	public static function get_instance() {
-		if ( ! self::$instance )
-			self::$instance = new TI_WordPress_SEO();
-		return self::$instance;
 	}
 
 	/**
@@ -102,7 +151,7 @@ class TI_WordPress_SEO {
 
 		$post_types = get_post_types();
 
-		foreach( $post_types as $post_type ) {
+		foreach ( $post_types as $post_type ) {
 			remove_meta_box( 'wpseo_meta', $post_type, 'normal' );
 		}
 
@@ -115,19 +164,19 @@ class TI_WordPress_SEO {
 	 */
 	public static function ti_remove_yoast_columns( $columns ) {
 
-	  unset( $columns['wpseo-score'] );
-	  unset( $columns['wpseo-title'] );
-	  unset( $columns['wpseo-metadesc'] );
-	  unset( $columns['wpseo-focuskw'] );
+		unset( $columns['wpseo-score'] );
+		unset( $columns['wpseo-title'] );
+		unset( $columns['wpseo-metadesc'] );
+		unset( $columns['wpseo-focuskw'] );
 
-	  return $columns;
+		return $columns;
 
 	}
 
 }
 
 function ti_wordpress_seo_init() {
-	if( class_exists( 'WPSEO_Admin' ) ) {
+	if ( class_exists( 'WPSEO_Admin' ) ) {
 		TI_WordPress_SEO::get_instance();
 	}
 }

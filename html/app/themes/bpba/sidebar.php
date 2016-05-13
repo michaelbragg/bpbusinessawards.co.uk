@@ -33,7 +33,7 @@ if ( ! is_active_sidebar( 'sidebar-1' ) ) {
 
   <h4 class="gamma heading--main">#BPBA2016</h4>
 
-	<a class="twitter-timeline" href="https://twitter.com/search?q=%23BPBA2016%20exclude%3Aretweets" data-widget-id="728167826196848645">Tweets about #BPBA2016</a>
+	<a class="twitter-timeline" href="https://twitter.com/search?q=%23BPBA2016%20exclude%3Aretweets" data-widget-id="728167826196848645" data-chrome="noheader">Tweets about #BPBA2016</a>
 	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
 </article>

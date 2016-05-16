@@ -16,50 +16,24 @@ class TI_Roles_And_Capabilities {
 	 */
 	private static $instance = false;
 
+	protected $user;
+
 	/**
 	 * Add required hooks
 	 */
 	function __construct() {
 
-		/* If user is Editor or below */
-		if ( ! current_user_can( 'manage_options' ) ) {
+		// Get current users details
+		add_action(
+			'init',
+			array( $this, 'ti_get_user' )
+		);
 
-			add_action(
-				'admin_menu',
-				array( $this, 'ti_hide_tools_menu' ),
-				9999
-			);
-
-			add_action(
-				'admin_notices',
-				array( $this, 'ti_proper_update_message' ),
-				1
-			);
-
-			add_action(
-				'wp_before_admin_bar_render',
-				array( $this, 'ti_remove_multisite_admin_link' ),
-				9999
-			);
-
-		}
-
-		/* If user is Author or below */
-		if ( ! current_user_can( 'publish_pages' ) ) {
-
-		}
-
-		/* If user is subscriber */
-		if ( ! current_user_can( 'edit_posts' ) ) {
-			// @codingStandardsIgnoreStart
-			// Hide the admin bar
-			show_admin_bar( false );
-			add_filter(
-				'show_admin_bar',
-				array( $this, 'remove_admin_bar_space' )
-			);
-			// @codingStandardsIgnoreEnd
-		}
+		// Run actions once WordPress has initialized
+		add_action(
+			'init',
+			array( $this, 'ti_init' )
+		);
 
 	}
 
@@ -76,10 +50,82 @@ class TI_Roles_And_Capabilities {
 	}
 
 	/**
+	 * Get current users details
+	 * @since 0.1.0
+	 */
+
+	public function ti_get_user() {
+		// Get an instance of the current user
+		$user_id = wp_get_current_user()->ID;
+		$current_user = new WP_User( $user_id );
+		// Set protected variable
+		$this->user = $current_user;
+	}
+
+	/**
+	 * Check users capabilities
+	 * @since 0.1.0
+	 */
+	public function ti_has_user_capability( $capability ) {
+		if ( $this->user->has_cap( $capability ) ) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * Hooks to run on WordPress initialization
+	 * @since 0.1.0
+	 */
+	public function ti_init() {
+
+		/* If user is Editor or below */
+		if ( ! $this->ti_has_user_capability( 'manage_options' ) ) {
+
+			add_action(
+				'wp_before_admin_bar_render',
+				array( $this, 'ti_remove_multisite_admin_link' ),
+				9999
+			);
+
+			add_action(
+				'admin_menu',
+				array( $this, 'ti_hide_tools_menu' ),
+				9999
+			);
+
+			add_action(
+				'admin_notices',
+				array( $this, 'ti_proper_update_message' ),
+				1
+			);
+
+		}
+
+		/* If user is Author or below */
+		if ( ! $this->ti_has_user_capability( 'publish_pages' ) ) {
+
+		}
+
+		/* If user is subscriber */
+		if ( ! $this->ti_has_user_capability( 'edit_posts' ) ) {
+			// @codingStandardsIgnoreStart
+			// Hide the admin bar
+			show_admin_bar( false );
+			add_filter(
+				'show_admin_bar',
+				array( $this, 'remove_admin_bar_space' )
+			);
+			// @codingStandardsIgnoreEnd
+		}
+
+	}
+
+	/**
 	 * Only show WordPress update message to administrator roles
 	 * @since 0.1.0
 	 */
-	public static function ti_proper_update_message() {
+	public function ti_proper_update_message() {
 		remove_action( 'admin_notices', 'update_nag', 3 );
 	}
 
@@ -87,12 +133,13 @@ class TI_Roles_And_Capabilities {
 	 * Hide Tools option for Editor role and below
 	 * @since  0.1.0
 	 */
-	public static function ti_hide_tools_menu() {
+	public function ti_hide_tools_menu() {
 		remove_menu_page( 'tools.php' ); // Tools
 	}
 
 	/**
 	 * Remove space left by not showing the admin bar
+	 * @since 0.1.0
 	 */
 	public function remove_admin_bar_space(){
 		return false;
@@ -100,8 +147,10 @@ class TI_Roles_And_Capabilities {
 
 	/**
 	 * Remove multisite link in admin bar
+	 * @since 0.1.0
 	 */
 	public function ti_remove_multisite_admin_link( ) {
+		// @TODO remove global if possible
 		global $wp_admin_bar;
 		$wp_admin_bar->remove_node( 'my-sites' );
 	}

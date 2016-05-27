@@ -228,7 +228,7 @@ class BA_Partners {
  *
 */
 function ba_partners_get_url() {
-	return get_post_meta( get_the_ID(), 'ba_partners_partners_url', true );
+	return get_post_meta( get_the_ID(), '_ba_partners_partners_url', true );
 }
 
 function ba_partners_init() {

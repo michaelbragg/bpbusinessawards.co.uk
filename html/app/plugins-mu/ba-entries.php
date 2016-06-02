@@ -8,6 +8,10 @@
 
 class BA_Entries {
 
+	protected $post_type = 'ba-entries';
+
+	protected $metabox_id = '_ba_entries_';
+
 	public function __construct() {
 
 		add_action(
@@ -21,14 +25,24 @@ class BA_Entries {
 
 		add_action(
 			'init',
+			array( $this, 'add_caps_editor' )
+		);
+
+		add_action(
+			'init',
 			array( $this, 'add_post_type' )
 		);
 
 		add_action(
-			'map_meta_cap',
-			array( $this, 'entries_add_role_caps' ),
+			'manage_users_columns',
+			array( $this, 'update_users_columns' )
+		);
+
+		add_action(
+			'manage_users_custom_column',
+			array( $this, 'users_columns_add_entries' ),
 			10,
-			4
+			3
 		);
 
 		add_filter(
@@ -53,6 +67,17 @@ class BA_Entries {
 			define( $constant, $value ); // Constants can be overidden via wp-config.php
 		}
 
+	}
+
+	/**
+	 * Allow Editor role to view users list
+	 */
+	public function add_caps_editor() {
+		$role = get_role( 'editor' );
+		// Check if Editor has `list_users` capabilities.
+		if ( true !== $role->capabilities['list_users'] ) {
+			$role->add_cap( 'list_users' );
+		}
 	}
 
 	public function enqueue_scripts() {
@@ -128,10 +153,70 @@ class BA_Entries {
 
 	}
 
-	public function entries_add_role_caps( $caps, $cap, $user_id, $args ){
+	/**
+	 * Update manage user table columns
+	 */
+	public function update_users_columns( $column_headers ) {
+		unset( $column_headers['posts'] );
+		$column_headers['telephone'] = __( 'Telephone', 'ba-entries' );
+		$column_headers['entries'] = __( 'Entries (Pending)', 'ba-entries' );
+		return $column_headers;
+	}
 
-		$subRole = get_role( 'subscriber' );
-		return $caps;
+	/**
+	 * Add content to custom columns
+	 */
+	public function users_columns_add_entries( $output, $column_name, $user_id ) {
+
+		if ( 'entries' === $column_name ) {
+			return sprintf(
+				'%1$s (%2$s)',
+				count_user_posts( $user_id , $this->post_type ),
+				$this->get_users_pending_posts( $user_id )
+			);
+		}
+
+		if ( 'telephone' === $column_name ) {
+			return $this->get_users_telephone( $user_id );
+		}
+
+		return $output;
+
+	}
+
+	/**
+	 * Get count of pending entries
+	 */
+	public function get_users_pending_posts( $user_id ) {
+		$args = array(
+			'author'	=> $user_id,
+			'post_type'	=> $this->post_type,
+			'post_status'	=> 'pending',
+		);
+		$myquery = new WP_Query( $args );
+		return $myquery->found_posts;
+	}
+
+	/**
+	 * Get users telephone from most recent entry.
+	 */
+	public function get_users_telephone( $user_id ) {
+		$args = array(
+			'author'	=> $user_id,
+			'post_type'	=> $this->post_type,
+			'post_status'	=> array( 'pending', 'publish' ),
+			'orderby'	=> 'DATETIME',
+			'order'	=> 'DESC',
+			'posts_per_page'	=> 1,
+		);
+		$myquery = new WP_Query( $args );
+
+		if ( ! empty( $myquery->post ) ) {
+			return get_post_meta( $myquery->post->ID, $this->$metabox_id . 'contact_phone', true );
+		}
+
+		return false;
+
 	}
 
 	public function add_query_vars_filter( $vars ){

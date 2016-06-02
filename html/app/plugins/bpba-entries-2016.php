@@ -178,8 +178,7 @@ function bpba_entries_2016_form() {
 			$prefix . 'smallbusiness' => __( 'Small Business of the Year', 'bpba-entries-2016' ),
 			$prefix . 'newbusiness' => __( 'New Business of the Year', 'bpba-entries-2016' ),
 			$prefix . 'entrepreneur' => __( 'Business Entrepreneur of the Year', 'bpba-entries-2016' ),
-			$prefix . 'legal' => __( 'Legal Services', 'bpba-entries-2016' ),
-			$prefix . 'financial' => __( 'Financial Services', 'bpba-entries-2016' ),
+			$prefix . 'services' => __( 'Services', 'bpba-entries-2016' ),
 			$prefix . 'marketing' => __( 'Sales and Marketing', 'bpba-entries-2016' ),
 			$prefix . 'manufacturing' => __( 'Excellence in Manufacturing', 'bpba-entries-2016' ),
 			$prefix . 'technology' => __( 'Excellence in Science and Technology', 'bpba-entries-2016' ),
@@ -880,151 +879,75 @@ function bpba_entries_2016_form() {
 	);
 
 	/**
-	 * Legal Award
+	 * Services Award
 	 */
 
-	$legal = new_cmb2_box( array(
-		'id'           => $prefix . 'legal',
-		'title'				 => __( 'Legal Services Award', 'bpba-entries-2016' ),
+	$services = new_cmb2_box( array(
+		'id'           => $prefix . 'services',
+		'title'				 => __( 'Services Award', 'bpba-entries-2016' ),
 		'object_types' => array( 'ba-entries' ),
 		'context'			 => 'normal',
 		'priority'		 => 'default',
 		'show_names'	 => 'true',
 	) );
 
-	$legal->add_field( array(
+	$services->add_field( array(
 		'name'						=> __( 'Please provide details of the geographical scope of your customer or client base', 'bpba-entries-2016' ),
-		'id' 							=> $prefix . 'legal_geographical',
+		'id' 							=> $prefix . 'services_geographical',
 		'type'						=> 'textarea',
 		'default'					=> 'bpba_entries_set_default',
 		'attributes'			=> array(),
 		)
 	);
 
-	$legal->add_field( array(
+	$services->add_field( array(
 		'name'						=> __( 'Please provide the names of 2 customers or clients who would be happy to endorse your award entry', 'bpba-entries-2016' ),
-		'id' 							=> $prefix . 'legal_endorse',
+		'id' 							=> $prefix . 'services_endorse',
 		'type'						=> 'textarea',
 		'default'					=> 'bpba_entries_set_default',
 		'attributes'			=> array(),
 		)
 	);
 
-	$legal->add_field( array(
+	$services->add_field( array(
 		'name'						=> __( 'Please provide details of an innovation within your company which has helped you to achieve your objectives', 'bpba-entries-2016' ),
-		'id' 							=> $prefix . 'legal_innovation',
+		'id' 							=> $prefix . 'services_innovation',
 		'type'						=> 'textarea',
 		'default'					=> 'bpba_entries_set_default',
 		'attributes'			=> array(),
 		)
 	);
 
-	$legal->add_field( array(
+	$services->add_field( array(
 		'name'						=> __( 'Please provide details of how you have created a competitive edge through service differentiation', 'bpba-entries-2016' ),
-		'id' 							=> $prefix . 'legal_competitive',
+		'id' 							=> $prefix . 'services_competitive',
 		'type'						=> 'textarea',
 		'default'					=> 'bpba_entries_set_default',
 		'attributes'			=> array(),
 		)
 	);
 
-	$legal->add_field( array(
+	$services->add_field( array(
 		'name'						=> __( 'Are you accredited with a quality standard? (Please specify)', 'bpba-entries-2016' ),
-		'id' 							=> $prefix . 'legal_standard',
+		'id' 							=> $prefix . 'services_standard',
 		'type'						=> 'textarea',
 		'default'					=> 'bpba_entries_set_default',
 		'attributes'			=> array(),
 		)
 	);
 
-	$legal->add_field( array(
+	$services->add_field( array(
 		'name'						=> __( 'Are you pursuing accreditation?', 'bpba-entries-2016' ),
-		'id' 							=> $prefix . 'legal_accreditation',
+		'id' 							=> $prefix . 'services_accreditation',
 		'type'						=> 'textarea',
 		'default'					=> 'bpba_entries_set_default',
 		'attributes'			=> array(),
 		)
 	);
 
-	$legal->add_field( array(
+	$services->add_field( array(
 		'name'						=> __( 'Any further information you feel would support this entry', 'bpba-entries-2016' ),
-		'id' 							=> $prefix . 'legal_information',
-		'type'						=> 'textarea',
-		'default'					=> 'bpba_entries_set_default',
-		'attributes'			=> array(),
-		)
-	);
-
-	/**
-	 * Financial Services Award
-	 */
-
-	$financial = new_cmb2_box( array(
-		'id'           => $prefix . 'financial',
-		'title'				 => __( 'Financial Services Award', 'bpba-entries-2016' ),
-		'object_types' => array( 'ba-entries' ),
-		'context'			 => 'normal',
-		'priority'		 => 'default',
-		'show_names'	 => 'true',
-	) );
-
-	$financial->add_field( array(
-		'name'						=> __( 'Please provide details of the geographical scope of your customer or client base', 'bpba-entries-2016' ),
-		'id' 							=> $prefix . 'financial_geographical',
-		'type'						=> 'textarea',
-		'default'					=> 'bpba_entries_set_default',
-		'attributes'			=> array(),
-		)
-	);
-
-	$financial->add_field( array(
-		'name'						=> __( 'Please provide the names of 2 customers or clients who would be happy to endorse your award entry', 'bpba-entries-2016' ),
-		'id' 							=> $prefix . 'financial_endorse',
-		'type'						=> 'textarea',
-		'default'					=> 'bpba_entries_set_default',
-		'attributes'			=> array(),
-		)
-	);
-
-	$financial->add_field( array(
-		'name'						=> __( 'Please provide details of an innovation within your company which has helped you to achieve your objectives', 'bpba-entries-2016' ),
-		'id' 							=> $prefix . 'financial_innovation',
-		'type'						=> 'textarea',
-		'default'					=> 'bpba_entries_set_default',
-		'attributes'			=> array(),
-		)
-	);
-
-	$financial->add_field( array(
-		'name'						=> __( 'Please provide details of how you have created a competitive edge through service differentiation', 'bpba-entries-2016' ),
-		'id' 							=> $prefix . 'financial_competitive',
-		'type'						=> 'textarea',
-		'default'					=> 'bpba_entries_set_default',
-		'attributes'			=> array(),
-		)
-	);
-
-	$financial->add_field( array(
-		'name'						=> __( 'Are you accredited with a quality standard? (Please specify)', 'bpba-entries-2016' ),
-		'id' 							=> $prefix . 'financial_standard',
-		'type'						=> 'textarea',
-		'default'					=> 'bpba_entries_set_default',
-		'attributes'			=> array(),
-		)
-	);
-
-	$financial->add_field( array(
-		'name'						=> __( 'Are you pursuing accreditation?', 'bpba-entries-2016' ),
-		'id' 							=> $prefix . 'financial_accreditation',
-		'type'						=> 'textarea',
-		'default'					=> 'bpba_entries_set_default',
-		'attributes'			=> array(),
-		)
-	);
-
-	$financial->add_field( array(
-		'name'						=> __( 'Any further information you feel would support this entry', 'bpba-entries-2016' ),
-		'id' 							=> $prefix . 'financial_information',
+		'id' 							=> $prefix . 'services_information',
 		'type'						=> 'textarea',
 		'default'					=> 'bpba_entries_set_default',
 		'attributes'			=> array(),
@@ -1988,7 +1911,7 @@ function bpba_entries_2016_form() {
 
 	$additional->add_field( array(
 		'name'							=> __( 'Finalise Submission', 'bpba-entries-2016' ),
-		'description'				=> __( 'Please tick to finalise the submission of this entry and you have the and agree to the T&C&rsquo;s.', 'bpba-entries-2016' ),
+		'description'				=> __( 'Please tick to finalise the submission of this entry and you have agreed to the T&C&rsquo;s.', 'bpba-entries-2016' ),
 		'id'								=> 'bpba_entries_2016_additional_submit',
 		'type'							=> 'checkbox',
 	) );
@@ -2080,8 +2003,7 @@ function ba_entries_2016_handle_frontend_post_form_submission() {
 		'_bpba_entries_2016_smallbusiness',
 		'_bpba_entries_2016_newbusiness',
 		'_bpba_entries_2016_entrepreneur',
-		'_bpba_entries_2016_legal',
-		'_bpba_entries_2016_financial',
+		'_bpba_entries_2016_services',
 		'_bpba_entries_2016_marketing',
 		'_bpba_entries_2016_manufacturing',
 		'_bpba_entries_2016_technology',

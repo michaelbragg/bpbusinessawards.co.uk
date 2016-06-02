@@ -66,13 +66,9 @@ function get_meta_boxes(){
 			'title' => 'Business Entrepreneur of the Year',
 			'js-id' => '_bpba_entries_2016_entrepreneur',
 		),
-		'_bpba_entries_2016_legal' => array(
-			'title'	=> 'Legal Services',
-			'js-id'	=> '_bpba_entries_2016_legal',
-		),
-		'_bpba_entries_2016_financial' => array(
-			'title'	=> 'Financial Services',
-			'js-id'	=> '_bpba_entries_2016_financial',
+		'_bpba_entries_2016_services' => array(
+			'title'	=> 'Services',
+			'js-id'	=> '_bpba_entries_2016_services',
 		),
 		'_bpba_entries_2016_marketing' => array(
 			'title' => 'Sales and Marketing',

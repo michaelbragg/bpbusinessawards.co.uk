@@ -10,7 +10,7 @@ class BA_Entries {
 
 	protected $post_type = 'ba-entries';
 
-	protected $metabox_id = '_ba_entries_';
+	protected $metabox_id = '_bpba_entries_2016';
 
 	public function __construct() {
 
@@ -212,7 +212,11 @@ class BA_Entries {
 		$myquery = new WP_Query( $args );
 
 		if ( ! empty( $myquery->post ) ) {
-			return get_post_meta( $myquery->post->ID, $this->$metabox_id . 'contact_phone', true );
+			$contact_phone = get_post_meta( $myquery->post->ID, '_bpba_entries_2016_contact_phone', true );
+			if ( ! empty( $contact_phone ) ) {
+				return $contact_phone;
+			}
+			return false;
 		}
 
 		return false;

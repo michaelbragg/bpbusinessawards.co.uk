@@ -2066,3 +2066,211 @@ function ba_entries_2016_handle_frontend_post_form_submission() {
 }
 
 add_action( 'cmb2_after_init', 'ba_entries_2016_handle_frontend_post_form_submission' );
+
+
+/**
+ * Export Entires
+ */
+add_action(
+	'admin_menu',
+	'tm_entries_2016_export_page'
+);
+
+/**
+ * Create export page
+ */
+function tm_entries_2016_export_page() {
+	add_submenu_page(
+		'edit.php?post_type=ba-entries',
+		__( 'Export Entires', 'tm-entries-2016' ),
+		__( 'Export', 'tm-entries-2016' ),
+		'edit_pages',
+		'tm-entries-export',
+		'tm_entries_2016_export_page_content'
+	);
+}
+
+/**
+ * Add custom style sheet for export page
+ */
+
+function tm_entries_2016_enqueue_style( $hook ) {
+	if ( 'ba-entries_page_tm-entries-export' != $hook ) {
+		return;
+	}
+	wp_add_inline_style( 'wp-admin', tm_entries_2016_export_styles() );
+}
+add_action( 'admin_enqueue_scripts', 'tm_entries_2016_enqueue_style' );
+
+/**
+ * Print styling for entry forms
+ */
+function tm_entries_2016_export_styles() {
+
+	$output  = '@page { size: A4 portrait; margin: 10mm; @bottom-center { content: counter(page); } }';
+	$output .= '@media print {';
+
+	// Hack for Chrome to support page breaks.
+	$output .= 'html, body, #wpwrap, #wpcontent, #wpbody, #wpbody-content { float: none; }';
+
+	// Hide WP Admin menus.
+	$output .= '#adminmenuback { display: none; }';
+	$output .= '#adminmenuwrap { display: none; }';
+
+	// Hide page title and instructions.
+	$output .= '.page-heading { display: none; }';
+	$output .= '.description { display: none; }';
+
+	// Reset main content width.
+	$output .= '#wpcontent, #wpfooter {  margin-left: 0; }';
+	$output .= '#wpfooter { display: none; }';
+
+	// Typographic styles.
+	$output .= 'body { font-size: 12pt; line-height: 1.6em; colour: rgb(51,51,51); }';
+	$output .= '.alpha { margin-bottom: 1em; font-size: 2.827em; line-height: 1.1em;}';
+	$output .= '.beta, .gamma { page-break-after: avoid; }';
+	$output .= '.beta { margin-bottom: 0.5em; font-size: 1.999em; font-weight: bold; }';
+	$output .= '.gamma { margin-bottom: 0.5em; font-size: 1.414rm; font-weight: bold; }';
+
+	// Front Cover.
+	$output .= '.frontcover { margin-bottom: 1em; }';
+
+	$output .= '.entry { position: relative; display: block; page-break-after: always; }';
+	$output .= '.entry:last-of-type { page-break-after: auto; }';
+
+	// Format categories.
+	$output .= '.category { margin-bottom: 1em; }';
+
+	// Format questions.
+	$output .= '.question { margin-bottom: 2em; padding-bottom: 1em; border-bottom: 1pt solid rgba(0,0,0,0.3); page-break-inside: avoid; }';
+
+	$output .= '}';
+
+	return $output;
+
+}
+
+/**
+ * Export page content
+ */
+function tm_entries_2016_export_page_content() {
+	$entry = intval( $_GET['entry'] );
+	printf( '<h1 class="page-heading">%1$s</h1>', esc_html( get_admin_page_title() ) );
+	if ( empty( $entry ) ) {
+		echo '<p class="description">' . esc_html__( 'Chose an entry to export from the Entries page.', 'tm-entries-2016' ) . '</p>';
+	} else {
+		echo '<p class="description">' . esc_html__( 'Export entries feature description.', 'tm-entries-2016' ) . '</p>';
+
+		// Get categories to display.
+		$has_categories = cmb2_get_field_value( '_bpba_entries_2016_common', 'bpba_entries_2016_categories', $entry );
+		$common = wp_list_pluck( cmb2_get_metabox( '_bpba_entries_2016_common' )->prop( 'fields' ), $entry );
+		// Loop throught each category including common questions and misc for each.
+		foreach ( $has_categories as $cat_id => $metabox ) {
+			$field_ids = wp_list_pluck( cmb2_get_metabox( $metabox )->prop( 'fields' ), $entry );
+			echo '<div class="entry">';
+			echo '<div class="frontcover">';
+			echo '<h1 class="alpha">BP Business Awards<br>Entry for ' . get_the_title( $entry ) . '</h1>';
+			echo '<p class="beta">'. get_meta_box_title()[ $metabox ] . '</p>';
+			echo '</div>';
+			// Common Questions.
+			echo '<section  class="category common">';
+			printf( '<h2 class="beta">%1$s</h2>', esc_html__( 'Common Questions', 'ctba-entries' ) );
+			foreach ( $common as $common_id => $content ) {
+				if ( 'bpba_entries_2016_categories' !== $common_id && 'submitted_post_title' !== $common_id ) {
+					echo '<div class="question">';
+					$common_content = cmb2_get_field( '_bpba_entries_2016_common', $common_id, $entry );
+					printf( '<h3>%1$s</h3>', esc_html( $common_content->args['name'] ) );
+					tm_entries_2016_get_value( '_bpba_entries_2016_common', $common_content->args, $common_id );
+					echo '</div>';
+				}
+			}
+			echo '</section>';
+
+			echo '<section class="category">';
+			// Categories.
+			printf( '<h2 class="beta">%1$s</h2>', esc_html( get_meta_box_title()[ $metabox ] ) );
+			foreach ( $field_ids as $field_id => $content ) {
+				echo '<div class="question">';
+				$field = cmb2_get_field( $metabox, $field_id, $entry );
+				printf( '<h3 class="gamma">%1$s</h3>', esc_html( $field->args['name'] ) );
+				tm_entries_2016_get_value( $metabox, $field->args, $field_id );
+				echo '</div>';
+			}
+			echo '</section>';
+			echo '</div>';
+		}
+	}
+}
+
+/**
+ * Get value of cmb2 field
+ *
+ * @param  [type] $metabox  [description]
+ * @param  [type] $field    [description]
+ * @param  [type] $field_id [description]
+ * @return [type]           [description]
+ */
+function tm_entries_2016_get_value( $metabox, $field, $field_id ) {
+	switch ( $field['type'] ) {
+		case 'multicheck':
+			break;
+		default:
+			echo wpautop( cmb2_get_field_value( $metabox, $field_id ) );
+			break;
+	}
+}
+
+
+/**
+ * Add link to admin misc actions metabox
+ */
+function tm_entries_2016_export_link() {
+	$link = add_query_arg(
+		array(
+			'post_type' => 'ba-entries',
+			'page'	=> 'tm-entries-export',
+			'entry' => get_the_ID(),
+		),
+		admin_url(
+			'edit.php'
+		)
+	);
+
+	?>
+	<div class="misc-pub-section curtime misc-pub-curtime">
+	<span class="dashicons dashicons-download"></span><span id="export">Export entry:</span>
+	<a href="<?php echo esc_url( $link ); ?>"><span aria-hidden="true">Print</span> <span class="screen-reader-text">Print this entry</span></a>
+</div>
+<?php }
+
+add_action( 'post_submitbox_misc_actions', 'tm_entries_2016_export_link' );
+
+/**
+ * Return category titles
+ *
+ * @return array Key/Value of catgegory ID / Title.
+ */
+function get_meta_box_title() {
+	/**
+	 * This is the metabox id, and array of options to be used in styling the metabox
+	 * Add metabox to be outputted must be listed here.
+	 */
+	$array = array(
+
+		'_bpba_entries_2016_companyyear' => 'Common Questions',
+		'_bpba_entries_2016_smallbusiness' => 'Small Business of the Year',
+		'_bpba_entries_2016_newbusiness' => 'New Business of the Year',
+		'_bpba_entries_2016_entrepreneur' => 'Business Entrepreneur of the Year',
+		'_bpba_entries_2016_services' => 'Professional Services',
+		'_bpba_entries_2016_marketing' => 'Sales and Marketing',
+		'_bpba_entries_2016_manufacturing' => 'Excellence in Manufacturing',
+		'_bpba_entries_2016_technology' => 'Excellence in Science & Technology',
+		'_bpba_entries_2016_retail' => 'Retail Business of the Year',
+		'_bpba_entries_2016_creative' => 'Creative Communications & Digital Business of the Year',
+		'_bpba_entries_2016_export' => 'Export',
+		'_bpba_entries_2016_community' => 'Contribution to the Community',
+		'_bpba_entries_2016_notforprofit' => 'Not-for-Profit Organisation',
+		'_bpba_entries_2016_additional' => 'Additional Information',
+	);
+	return $array;
+}

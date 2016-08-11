@@ -2256,21 +2256,20 @@ function get_meta_box_title() {
 	 * Add metabox to be outputted must be listed here.
 	 */
 	$array = array(
-
-		'_bpba_entries_2016_companyyear' => 'Common Questions',
-		'_bpba_entries_2016_smallbusiness' => 'Small Business of the Year',
-		'_bpba_entries_2016_newbusiness' => 'New Business of the Year',
-		'_bpba_entries_2016_entrepreneur' => 'Business Entrepreneur of the Year',
-		'_bpba_entries_2016_services' => 'Professional Services',
-		'_bpba_entries_2016_marketing' => 'Sales and Marketing',
-		'_bpba_entries_2016_manufacturing' => 'Excellence in Manufacturing',
-		'_bpba_entries_2016_technology' => 'Excellence in Science & Technology',
-		'_bpba_entries_2016_retail' => 'Retail Business of the Year',
-		'_bpba_entries_2016_creative' => 'Creative Communications & Digital Business of the Year',
-		'_bpba_entries_2016_export' => 'Export',
-		'_bpba_entries_2016_community' => 'Contribution to the Community',
-		'_bpba_entries_2016_notforprofit' => 'Not-for-Profit Organisation',
-		'_bpba_entries_2016_additional' => 'Additional Information',
+		'_bpba_entries_2016_companyyear'			=> 'Common Questions',
+		'_bpba_entries_2016_smallbusiness'		=> 'Small Business of the Year',
+		'_bpba_entries_2016_newbusiness'			=> 'New Business of the Year',
+		'_bpba_entries_2016_entrepreneur'			=> 'Business Entrepreneur of the Year',
+		'_bpba_entries_2016_services'					=> 'Professional Services',
+		'_bpba_entries_2016_marketing'				=> 'Sales and Marketing',
+		'_bpba_entries_2016_manufacturing'		=> 'Excellence in Manufacturing',
+		'_bpba_entries_2016_technology' 			=> 'Excellence in Science & Technology',
+		'_bpba_entries_2016_retail'						=> 'Retail Business of the Year',
+		'_bpba_entries_2016_creative'					=> 'Creative Communications & Digital Business of the Year',
+		'_bpba_entries_2016_export'						=> 'Export',
+		'_bpba_entries_2016_community'				=> 'Contribution to the Community',
+		'_bpba_entries_2016_notforprofit'			=> 'Not-for-Profit Organisation',
+		'_bpba_entries_2016_additional'				=> 'Additional Information'
 	);
 	return $array;
 }

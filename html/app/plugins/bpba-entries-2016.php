@@ -2256,7 +2256,8 @@ function get_meta_box_title() {
 	 * Add metabox to be outputted must be listed here.
 	 */
 	$array = array(
-		'_bpba_entries_2016_companyyear'			=> 'Common Questions',
+		'_bpba_entries_2016_common'						=> 'Common Questions',
+		'_bpba_entries_2016_companyyear'			=> 'Company of the Year',
 		'_bpba_entries_2016_smallbusiness'		=> 'Small Business of the Year',
 		'_bpba_entries_2016_newbusiness'			=> 'New Business of the Year',
 		'_bpba_entries_2016_entrepreneur'			=> 'Business Entrepreneur of the Year',

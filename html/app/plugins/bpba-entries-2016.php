@@ -2071,6 +2071,31 @@ add_action( 'cmb2_after_init', 'ba_entries_2016_handle_frontend_post_form_submis
 /**
  * Export Entires
  */
+
+ /**
+  * Add link to admin misc actions metabox
+  */
+function tm_entries_2016_export_link() {
+	$link = add_query_arg(
+		array(
+			'post_type' => 'ba-entries',
+			'page'	=> 'tm-entries-export',
+			'entry' => get_the_ID(),
+		),
+		admin_url(
+			'edit.php'
+		)
+	);
+
+	?>
+	<div class="misc-pub-section curtime misc-pub-curtime">
+	<span class="dashicons dashicons-download"></span><span id="export">Export entry:</span>
+	<a href="<?php echo esc_url( $link ); ?>"><span aria-hidden="true">Print</span> <span class="screen-reader-text">Print this entry</span></a>
+</div>
+<?php }
+
+add_action( 'post_submitbox_misc_actions', 'tm_entries_2016_export_link' );
+
 add_action(
 	'admin_menu',
 	'tm_entries_2016_export_page'
@@ -2154,52 +2179,61 @@ function tm_entries_2016_export_styles() {
  * Export page content
  */
 function tm_entries_2016_export_page_content() {
+
 	$entry = intval( $_GET['entry'] );
 	printf( '<h1 class="page-heading">%1$s</h1>', esc_html( get_admin_page_title() ) );
 	if ( empty( $entry ) ) {
-		echo '<p class="description">' . esc_html__( 'Chose an entry to export from the Entries page.', 'tm-entries-2016' ) . '</p>';
-	} else {
-		echo '<p class="description">' . esc_html__( 'Export entries feature description.', 'tm-entries-2016' ) . '</p>';
+		echo '<p class="description">' . esc_html__( 'Choose an entry to export from the Entries page.', 'tm-entries-2016' ) . '</p>';
+		return;
+	}
+	echo '<p class="description">' . esc_html__( 'Export entries.', 'tm-entries-2016' ) . '</p>';
 
-		// Get categories to display.
-		$has_categories = cmb2_get_field_value( '_bpba_entries_2016_common', 'bpba_entries_2016_categories', $entry );
-		$common = wp_list_pluck( cmb2_get_metabox( '_bpba_entries_2016_common' )->prop( 'fields' ), $entry );
-		// Loop throught each category including common questions and misc for each.
-		foreach ( $has_categories as $cat_id => $metabox ) {
-			$field_ids = wp_list_pluck( cmb2_get_metabox( $metabox )->prop( 'fields' ), $entry );
-			echo '<div class="entry">';
-			echo '<div class="frontcover">';
-			echo '<h1 class="alpha">BP Business Awards<br>Entry for ' . get_the_title( $entry ) . '</h1>';
-			echo '<p class="beta">'. get_meta_box_title()[ $metabox ] . '</p>';
-			echo '</div>';
-			// Common Questions.
-			echo '<section  class="category common">';
-			printf( '<h2 class="beta">%1$s</h2>', esc_html__( 'Common Questions', 'ctba-entries' ) );
-			foreach ( $common as $common_id => $content ) {
-				if ( 'bpba_entries_2016_categories' !== $common_id && 'submitted_post_title' !== $common_id ) {
-					echo '<div class="question">';
-					$common_content = cmb2_get_field( '_bpba_entries_2016_common', $common_id, $entry );
-					printf( '<h3>%1$s</h3>', esc_html( $common_content->args['name'] ) );
-					tm_entries_2016_get_value( '_bpba_entries_2016_common', $common_content->args, $common_id );
-					echo '</div>';
-				}
-			}
-			echo '</section>';
+	/** Get categories to display. */
+	$has_categories = cmb2_get_field_value( '_bpba_entries_2016_common', 'bpba_entries_2016_categories', $entry );
+	$common = wp_list_pluck( cmb2_get_metabox( '_bpba_entries_2016_common' )->prop( 'fields' ), $entry );
 
-			echo '<section class="category">';
-			// Categories.
-			printf( '<h2 class="beta">%1$s</h2>', esc_html( get_meta_box_title()[ $metabox ] ) );
-			foreach ( $field_ids as $field_id => $content ) {
+	// Loop throught each category including common questions and misc for each.
+	foreach ( $has_categories as $cat_id => $metabox ) {
+
+		$field_ids = wp_list_pluck( cmb2_get_metabox( $metabox )->prop( 'fields' ), $entry );
+		$category_titles = tm_events_get_meta_box_title();
+		echo '<div class="entry">';
+		echo '<div class="frontcover">';
+		echo '<h1 class="alpha">BP Business Awards<br>Entry for ' . get_the_title( $entry ) . '</h1>';
+		echo '<p class="beta">'. $category_titles[$metabox] . '</p>';
+		echo '</div>';
+
+		/** Common Questions. */
+		echo '<section  class="category common">';
+		printf( '<h2 class="beta">%1$s</h2>', esc_html__( 'Common Questions', 'tm-entries' ) );
+
+		foreach ( $common as $common_id => $content ) {
+			if ( 'bpba_entries_2016_categories' !== $common_id && 'submitted_post_title' !== $common_id ) {
 				echo '<div class="question">';
-				$field = cmb2_get_field( $metabox, $field_id, $entry );
-				printf( '<h3 class="gamma">%1$s</h3>', esc_html( $field->args['name'] ) );
-				tm_entries_2016_get_value( $metabox, $field->args, $field_id );
+				$common_content = cmb2_get_field( '_bpba_entries_2016_common', $common_id, $entry );
+				printf( '<h3>%1$s</h3>', esc_html( $common_content->args['name'] ) );
+				tm_entries_2016_get_value( '_bpba_entries_2016_common', $common_content->args, $common_id );
 				echo '</div>';
 			}
-			echo '</section>';
+		}
+
+		echo '</section>';
+
+		echo '<section class="category">';
+		// Categories.
+		printf( '<h2 class="beta">%1$s</h2>', esc_html( $category_titles[$metabox] ) );
+		foreach ( $field_ids as $field_id => $content ) {
+			echo '<div class="question">';
+			$field = cmb2_get_field( $metabox, $field_id, $entry );
+			printf( '<h3 class="gamma">%1$s</h3>', esc_html( $field->args['name'] ) );
+			tm_entries_2016_get_value( $metabox, $field->args, $field_id );
 			echo '</div>';
 		}
+		echo '</section>';
+		echo '</div>';
+
 	}
+
 }
 
 /**
@@ -2220,43 +2254,17 @@ function tm_entries_2016_get_value( $metabox, $field, $field_id ) {
 	}
 }
 
-
-/**
- * Add link to admin misc actions metabox
- */
-function tm_entries_2016_export_link() {
-	$link = add_query_arg(
-		array(
-			'post_type' => 'ba-entries',
-			'page'	=> 'tm-entries-export',
-			'entry' => get_the_ID(),
-		),
-		admin_url(
-			'edit.php'
-		)
-	);
-
-	?>
-	<div class="misc-pub-section curtime misc-pub-curtime">
-	<span class="dashicons dashicons-download"></span><span id="export">Export entry:</span>
-	<a href="<?php echo esc_url( $link ); ?>"><span aria-hidden="true">Print</span> <span class="screen-reader-text">Print this entry</span></a>
-</div>
-<?php }
-
-add_action( 'post_submitbox_misc_actions', 'tm_entries_2016_export_link' );
-
 /**
  * Return category titles
  *
  * @return array Key/Value of catgegory ID / Title.
  */
-function get_meta_box_title() {
+function tm_events_get_meta_box_title() {
 	/**
 	 * This is the metabox id, and array of options to be used in styling the metabox
 	 * Add metabox to be outputted must be listed here.
 	 */
 	$array = array(
-		'_bpba_entries_2016_common'						=> 'Common Questions',
 		'_bpba_entries_2016_companyyear'			=> 'Company of the Year',
 		'_bpba_entries_2016_smallbusiness'		=> 'Small Business of the Year',
 		'_bpba_entries_2016_newbusiness'			=> 'New Business of the Year',

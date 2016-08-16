@@ -8,6 +8,9 @@ if ( ! is_user_logged_in() ) {
 	exit;
 }
 
+/** @TODO: Refactor to Site Settings Option. */
+$nomination_status = false;
+
 // Only get out entry information once by storing it as a variable
 $get_entry = get_entry( $current_user->ID );
 
@@ -82,7 +85,19 @@ get_header(); ?>
 
 			<?php else : ?>
 				<?php /* Add new entry link */ ?>
-				<?php printf( '<a href="%2$s" class="btn">%1$s</a>', esc_html__( 'New entry form', 'ctba-2016' ), esc_url( site_url( '/nominate/entry/' ) ) ); ?>
+				<?php if( $nomination_status ):?>
+					<p><?php printf( '<a href="%2$s" class="btn">%1$s</a>', esc_html__( 'New entry form', 'ctba-2016' ), esc_url( site_url( '/nominate/entry/' ) ) ); ?></p>
+				<?php else: ?>
+					<section class="alert alert--message alert--warning alert--type box" role="alert">
+						<p>
+						<?php printf(
+							'<strong>%1$s</strong> %2$s</p>',
+							esc_html__( 'Info', 'ctba-2016' ),
+							esc_html__( 'Nominations have now closed.', 'ctba-2016' )
+						); ?>
+						</p>
+					</section>
+				<?php endif;?>
 			<?php endif; ?>
 				</div><!-- .entry-content -->
 

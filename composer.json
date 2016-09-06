@@ -34,7 +34,7 @@
   } ],
   "require": {
     "php": ">=5.4",
-    "johnpbloch/wordpress": "4.5.x",
+    "johnpbloch/wordpress": "4.6.x",
     "vlucas/phpdotenv": "2.2.x",
     "composer/installers": "1.0.x",
     "wpackagist-plugin/buddypress": "2.5.x",
@@ -55,7 +55,7 @@
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "~2.4",
-    "wp-coding-standards/wpcs": "*",
+    "wp-coding-standards/wpcs": "dev-master",
     "wpackagist-theme/twentysixteen": "*",
     "wpackagist-plugin/wordpress-importer": "*",
     "wpackagist-plugin/debug-bar": "*",

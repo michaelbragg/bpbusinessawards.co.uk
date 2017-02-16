@@ -115,6 +115,7 @@ add_action( 'save_post',     'bpba_2016_category_transient_flusher' );
 
 /**
  * Get users entries
+ *
  * @TODO Add offset option for pagination
  */
 function get_entry( $user_id ) {
@@ -148,7 +149,7 @@ function the_post_status() {
 }
 
 /* Return entered categories as comma seperated string */
-function get_entered_categories( ) {
+function get_entered_categories() {
 	// Key Value array of categories and their titles
 	// @TODO extract this out some how. Reducing the duplication throughout the site
 	$output = array();

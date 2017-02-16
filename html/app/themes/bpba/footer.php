@@ -17,11 +17,11 @@
 
 <section class="footer__sub wrapper cf">
 
-    <div class="wrapper__sub">
+	<div class="wrapper__sub">
 
-    <div class="ss1-ss4 ms1-ms2 ls1-ls4">
-      <h4 id="nav-footer">Site Map</h4>
-			<?php function events_nav_wrap(){
+	<div class="ss1-ss4 ms1-ms2 ls1-ls4">
+	  <h4 id="nav-footer">Site Map</h4>
+			<?php function events_nav_wrap() {
 					$wrap  = '<ul id="%1$s" class="%2$s">';
 			    $wrap .= '<li>';
 			    $wrap .= '<a href="' . esc_url( home_url( '/' ) ) . '" rel="home">';
@@ -35,18 +35,18 @@
 		<?php wp_nav_menu(
 			array(
 	  		'theme_location' => 'primary',
-	  		//'menu_id' => '' ,
+	  		// 'menu_id' => '' ,
 	  		'menu_class' => 'footer__sub--links list',
 	  		'container' => '',
-	  		'items_wrap' => events_nav_wrap()
+	  		'items_wrap' => events_nav_wrap(),
 			)
 		);
 		?>
-    </div>
+	</div>
 
-    <div class="grid__seperator--dark ss1-ss4 ms3-ms4 ls5-ls8">
-      <h4>Categories</h4>
-      <ul class="footer__sub--links list">
+	<div class="grid__seperator--dark ss1-ss4 ms3-ms4 ls5-ls8">
+	  <h4>Categories</h4>
+	  <ul class="footer__sub--links list">
 		<?php // WP_Query arguments
 
 		$args = array(
@@ -69,10 +69,10 @@
 
 ?>
 
-      </ul>
-    </div>
+	  </ul>
+	</div>
 
-    <div class="grid__seperator--dark ss1-ss4 ms5-ms6 ls9-ls12">
+	<div class="grid__seperator--dark ss1-ss4 ms5-ms6 ls9-ls12">
 			<h4>Event Sites</h4>
 
 		<?php wp_nav_menu(
@@ -85,9 +85,9 @@
 		);
 		?>
 
-    </div>
+	</div>
 
-  </div>
+	</div>
 
 </section>
 

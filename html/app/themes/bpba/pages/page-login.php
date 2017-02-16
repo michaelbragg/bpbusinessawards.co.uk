@@ -21,7 +21,7 @@ get_header(); ?>
 
 				<?php the_title( '<h1 class="gamma heading--main page-title">', '</h1>' ); ?>
 
-				<?php if( $nomination_status ):?>
+				<?php if ( $nomination_status ) : ?>
 					<p>
 					<?php printf(
 						'%1$s <a href="%2$s">%3$s</a>.',
@@ -30,7 +30,7 @@ get_header(); ?>
 						esc_html__( 'Click here to register', 'bpba-2016' )
 					); ?>
 					</p>
-				<?php else: ?>
+				<?php else : ?>
 					<section class="alert alert--message alert--info alert--type box" role="alert">
 						<p>
 						<?php printf(

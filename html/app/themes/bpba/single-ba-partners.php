@@ -15,23 +15,22 @@ get_header(); ?>
 		  <div class="wrapper__sub">
 		    <article class="content__main ss1-ss4 ms1-ms6 ls1-ls8 separator">
 		     		<?php
-		while ( have_posts() ) : the_post();
+					while ( have_posts() ) : the_post();
 
-			get_template_part( 'content-parts/content', 'partner' );
+						get_template_part( 'content-parts/content', 'partner' );
 
-			#the_post_navigation();
-
-			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
-				comments_template();
-			endif;
+						// the_post_navigation();
+						// If comments are open or we have at least one comment, load up the comment template.
+						if ( comments_open() || get_comments_number() ) :
+							comments_template();
+									endif;
 
 		endwhile; // End of the loop.
 		?>
 		    </article>
 
 				<aside id="secondary" class="content__aside widget-area ss1-ss4 ms1-ms6 ls9-ls12">
-		      <?php get_sidebar(); ?>
+				<?php get_sidebar(); ?>
 		    </aside>
 
 		  </div>

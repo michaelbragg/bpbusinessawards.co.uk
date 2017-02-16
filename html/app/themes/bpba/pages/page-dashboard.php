@@ -27,7 +27,7 @@ get_header(); ?>
 	<main id="main" class="box__large content__main wrapper cf" role="main">
 	  <div class="wrapper__sub">
 	    <article class="content__main ss1-ss4 ms1-ms6 ls1-ls12">
-				<?php wp_nav_menu( array( 'theme_location' => 'nominate', ) ); ?>
+				<?php wp_nav_menu( array( 'theme_location' => 'nominate' ) ); ?>
 
 				<header class="entry-header">
 					<?php printf( '<h1 class="gamma heading--main entry-title">%1$s</h1>', esc_html__( 'Dashboard', 'ctba-2016' ) ); ?>
@@ -85,9 +85,9 @@ get_header(); ?>
 
 			<?php else : ?>
 				<?php /* Add new entry link */ ?>
-				<?php if( $nomination_status ):?>
+				<?php if ( $nomination_status ) : ?>
 					<p><?php printf( '<a href="%2$s" class="btn">%1$s</a>', esc_html__( 'New entry form', 'ctba-2016' ), esc_url( site_url( '/nominate/entry/' ) ) ); ?></p>
-				<?php else: ?>
+				<?php else : ?>
 					<section class="alert alert--message alert--warning alert--type box" role="alert">
 						<p>
 						<?php printf(

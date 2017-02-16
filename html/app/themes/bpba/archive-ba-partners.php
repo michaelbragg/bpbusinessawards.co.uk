@@ -25,7 +25,7 @@ get_header(); ?>
 				<p>For more information regarding sponsorship opportunities, call Sophia Hayes on <a href="tel:08453313031">08453 31 30 31</a> / <a href="tel:07557133880">07557 133 880</a> or email <a href="mailto:shayes@championsukplc.com">shayes@championsukplc.com</a>.</p>
 			</header><!-- .page-header -->
 
-  <ul class="judges judges__columns list">
+	<ul class="judges judges__columns list">
 
 			<?php
 			/* Start the Loop */

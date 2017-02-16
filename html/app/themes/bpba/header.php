@@ -19,7 +19,9 @@
 <?php wp_head(); ?>
 </head>
 
-<body <?php if ( ! get_field( 'hero_hide' ) ) { body_class( 'has-hero' ); } else { body_class(); }; ?>>
+<body <?php if ( ! get_field( 'hero_hide' ) ) { body_class( 'has-hero' );
+} else { body_class();
+}; ?>>
 
 	<?php if ( function_exists( 'HM_GTM\tag' ) ) { HM_GTM\tag(); } ?>
 
@@ -35,15 +37,15 @@
 
 		      <a href="#nav-footer" class="navicon navicon__right ls-hidden" aria-controls="site-navigation" aria-expanded="false">Menu</a>
 
-		      <?php wp_nav_menu(
-		      	array(
+				<?php wp_nav_menu(
+					array(
 		      		'theme_location' => 'primary',
-		      		'menu_id' => 'js-nav__main' ,
+		      		'menu_id' => 'js-nav__main',
 		      		'menu_class' => 'nav__main__right list menu',
 		      		'container' => '',
-	      		)
-	      	);
-		      ?>
+					)
+				);
+				?>
 
 		    </nav>
 
@@ -53,16 +55,17 @@
 <?php if ( get_field( 'hero_hide' ) ) {
 	return;
 } else { ?>
-<section class="hero wrapper box__large hero--image" style="background-image: url(<?php if( get_field( 'hero_image' ) ){ echo wp_get_attachment_url( get_field( 'hero_image' ) ); } else { echo get_template_directory_uri() . '/gui/hero_default.jpg'; }  ?>);">
+<section class="hero wrapper box__large hero--image" style="background-image: url(<?php if ( get_field( 'hero_image' ) ) {  echo wp_get_attachment_url( get_field( 'hero_image' ) );
+} else { echo get_template_directory_uri() . '/gui/hero_default.jpg'; }  ?>);">
 
-  <section class="wrapper__sub">
+	<section class="wrapper__sub">
 
-    <div class="hero__content">
-      <?php if( get_field( 'hero_tagline' ) ){ ?><h4 class="hero__copy gamma"><?php the_field( 'hero_tagline' ); ?></h4><?php } else { echo '<h4 class="hero__copy gamma">Celebrate your success in business with the Birmingham Post.</h4>'; } ?>
-      <?php if( get_field( 'hero_btn_link' ) ){ ?><a class="hero__btn btn btn--primary" href="<?php the_field( 'hero_btn_link' ); ?>"><?php the_field( 'hero_btn_text' ); ?></a><?php } ?>
-    </div>
+	<div class="hero__content">
+		<?php if ( get_field( 'hero_tagline' ) ) {  ?><h4 class="hero__copy gamma"><?php the_field( 'hero_tagline' ); ?></h4><?php } else { echo '<h4 class="hero__copy gamma">Celebrate your success in business with the Birmingham Post.</h4>'; } ?>
+		<?php if ( get_field( 'hero_btn_link' ) ) {  ?><a class="hero__btn btn btn--primary" href="<?php the_field( 'hero_btn_link' ); ?>"><?php the_field( 'hero_btn_text' ); ?></a><?php } ?>
+	</div>
 
-  </section>
+	</section>
 
 </section>
 <?php } ?>

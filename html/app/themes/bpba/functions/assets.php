@@ -7,8 +7,8 @@
  * Dequeue scripts.
  */
 
-function bpba_dequeue_scripts()  {
-	//wp_dequeue_script( 'name' );
+function bpba_dequeue_scripts() {
+	// wp_dequeue_script( 'name' );
 }
 
 add_action( 'wp_print_scripts', 'bpba_dequeue_scripts', 100 );
@@ -17,8 +17,8 @@ add_action( 'wp_print_scripts', 'bpba_dequeue_scripts', 100 );
  * Dequeue styles.
  */
 
-function bpba_dequeue_styles()  {
-	//wp_dequeue_style( 'name' );
+function bpba_dequeue_styles() {
+	// wp_dequeue_style( 'name' );
 }
 
 add_action( 'wp_print_styles', 'bpba_dequeue_styles', 100 );
@@ -70,7 +70,6 @@ wp_add_inline_script(
  */
 
 // Default WordPress stylesheet
-
 wp_register_style(
 	'bpba-style',
 	get_stylesheet_uri(),
@@ -94,7 +93,7 @@ function bpba_scripts_load_global() {
 	wp_enqueue_script( 'bpba-navigation' );
 	wp_enqueue_script( 'bpba-skip-link-focus-fix' );
 
-	//Scripts to be loaded for nomination pages
+	// Scripts to be loaded for nomination pages
 	if ( is_page() && is_page( 'entry' ) ) {
 		wp_enqueue_script( 'bpba-nomination' );
 	}

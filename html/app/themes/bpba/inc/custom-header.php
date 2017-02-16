@@ -28,5 +28,4 @@ if ( ! function_exists( 'bpba_custom_logo' ) ) {
 		}
 		return $logo;
 	}
-
 }

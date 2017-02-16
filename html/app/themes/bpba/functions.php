@@ -2,13 +2,14 @@
 
 /**
  * Fix for ACF not being able to handle symlinks
+ *
  * @TODO Remove when fixed or ACF is removed
  */
 add_action( 'init', 'acf_hook', 0 );  // We use the 0 to bypass priority
 
 function acf_hook() {
 	if ( function_exists( 'acf' ) ) {
-		acf()->settings['dir'] = WP_CONTENT_URL. '/plugins/advanced-custom-fields/';
+		acf()->settings['dir'] = WP_CONTENT_URL . '/plugins/advanced-custom-fields/';
 	}
 }
 
@@ -18,8 +19,8 @@ function acf_hook() {
 $function_includes = array(
 	'functions/helper.php',						// Helper functions
 	'functions/assets.php',						// Scripts and stylesheets
-//	'functions/fields.php',						// Custom Template Admin Fields
-//	'functions/template-tags.php',		// Custom template tags
+// 'functions/fields.php',                     // Custom Template Admin Fields
+// 'functions/template-tags.php',      // Custom template tags
 	'functions/media.php',							// Updates to media files
 );
 
@@ -177,7 +178,7 @@ add_action( 'pre_get_posts', 'change_archive_partners_loop' );
  * Add custom query variable for failed logins.
  */
 
-function add_query_vars_login( $vars ){
+function add_query_vars_login( $vars ) {
 	$vars[] = 'status';
 	return $vars;
 }
@@ -205,7 +206,8 @@ add_action( 'wp_login_failed', 'my_front_end_login_fail' );
 /**
  * WP Admin login branding
  */
-function admin_login_branding() { ?>
+function admin_login_branding() {
+	?>
 <style type="text/css">
 body {
 	background-color: rgb(25,63,126) !important;
@@ -214,7 +216,7 @@ body.login div#login h1 a {
 	width: 272px;
 	height: 96px;
 	background-image: url('<?php echo get_template_directory_uri() . '/gui/logo_wp-admin.png'; ?>');
-  background-size: 100%;
+	background-size: 100%;
 }
 .login #nav {
 	color: rgb(255,255,255) !important;

@@ -19,7 +19,7 @@ if ( ( get_post_type( $object_id ) !== 'ba-entries' ) && ( $object_id != 0 ) ) {
 global $current_user;
 get_currentuserinfo();
 
-if ( $current_user->ID != get_post_field('post_author', $object_id ) && ( $object_id != 0 ) ) {
+if ( $current_user->ID != get_post_field( 'post_author', $object_id ) && ( $object_id != 0 ) ) {
 		remove_query_arg( 'entry' );
 		wp_redirect( home_url( $path = 'nominate/entry' ) );
 }
@@ -30,12 +30,12 @@ get_header(); ?>
 <div id="primary" class="content-area">
 
 <main id="main" class="content__main wrapper cf" role="main">
-  <div class="wrapper__sub">
-    <article class="ss1-ss4 ms1-ms6 ls1-ls12">
-      <?php
-wp_nav_menu(array(
-    'theme_location' => 'nominate',
-));
+	<div class="wrapper__sub">
+	<article class="ss1-ss4 ms1-ms6 ls1-ls12">
+		<?php
+		wp_nav_menu(array(
+			'theme_location' => 'nominate',
+		));
 ?>
 
 		<?php
@@ -53,8 +53,8 @@ wp_nav_menu(array(
 			// End of the loop.
 		endwhile;
 		?>
-    </article>
-  </div>
+	</article>
+	</div>
 </main>
 
 </div><!-- .content-area -->
